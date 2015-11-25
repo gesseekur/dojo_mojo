@@ -22,7 +22,7 @@
 	<form method="post" action="">
 		<input id="search" type="text" value="search" name="search">
 	</form>
-	<form method="post" action="">
+	<form method="post" action="/admins/add_product">
 		<input id="add" type="submit" name="submit" value="Add a new product">
 	</form>
 	</div>
@@ -39,18 +39,23 @@
 			</tr>
 		</thead>
 		<tbody>
+<?php 
+		foreach ($products as $product){
+?>
 			<tr>
 				<td>IMAGE</td>
-				<td>1</td>
-				<td>T-shirt</td>
-				<td>123</td>
-				<td>23423</td>
+				<td><?=$product['id']?></td>
+				<td><?=$product['name']?></td>
+				<td><?=$product['quantity']?></td>
+				<td><?=$product['quantity_sold']?></td>
 				<td>
-					<a href="">edit</a>
-					<a href="">delete</a>
+					<a href="/products/edit_product/<?=$product['id']?>">edit</a>
+					<a href="/admins/delete_product/<?=$product['id']?>">delete</a>
 				</td>
 			</tr>
-
+<?php
+		}
+?> 
 		</tbody>
 
 	</table>

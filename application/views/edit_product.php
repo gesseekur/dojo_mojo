@@ -5,7 +5,7 @@
 	<title>Edit Product</title>
 </head>
 <body>
-	<h2>Edit Product- ID #</h2>
+	<h2>Edit Product- ID </h2>
 	<form method="post" action="">
 		<p>Name:<input type="text" name="name"></p>
 		<p>Description:<input type="text" name="description"></p>
