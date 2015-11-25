@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Users extends CI_Controller {
+class Usercontroller extends CI_Controller {
 
 	public function index()
 	{
@@ -21,7 +21,10 @@ class Users extends CI_Controller {
 				"user_name" => $person["name"],
 				"user_alias" => $person["alias"],
 				"user_email" => $person["email"],
-				"user_id" => $person["id"]
+				"user_id" => $person["id"],
+				"user_birthday" => $person["birthday"],
+				"user_phone" => $person["phone"],
+				"user_role" => $person["roles"]
 			);
 		$this->session->set_userdata($user);
 		// put the right view after this
@@ -29,6 +32,7 @@ class Users extends CI_Controller {
 		}
 		else
 		{
+			// in the view if you call the variable login_error it will show the error
 			$this->session->set_flashdata("login_error", "Invalid email or password!");
 			redirect("/");
 		}	
@@ -36,7 +40,7 @@ class Users extends CI_Controller {
 
 	public function register()
 	{
-		//register the user
+		//register the user and adds to the validation error array which input is showing the error
 		$this->load->model('Usermodel');
 		$this->load->library("form_validation");
 		$this->form_validation->set_rules("email_address", "Email", "trim|required|is_unique[users.email]|valid_email");
