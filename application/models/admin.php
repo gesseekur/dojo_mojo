@@ -38,6 +38,12 @@
 			return $this->db->insert_id();
 		}
 
+		public function select_product($id) {
+			$query= "SELECT * FROM products WHERE id=?";
+			$values=array($id);
+			return $this->db->query($query,$values)->row_array();
+		}
+
 		public function update_product_to_db($product_name, $description,$price, $specifications,$category_id,$quantity, $quantity_sold,$image_name, $id){
 			$query="UPDATE products SET name=?,description=?, price=?, specifications=?, category_id=?, quantity=?,quantity_sold=?,image_name=?, updated_at=NOW()
 					WHERE products.id=?";
