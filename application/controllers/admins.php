@@ -73,6 +73,7 @@ class Admins extends CI_Controller {
 	public function edit_product($id){
 		$output['category']= $this->Admin->get_all_categories();
 		$output['id'] = $id;
+		$output['product'] = $this->Admin->select_product($id);
 		$this->load->view('edit_product', $output);
 	}
 
@@ -84,6 +85,7 @@ class Admins extends CI_Controller {
 		else {
 			$category_id= $this->input->post('category');
 		}
+
 		$product_name = $this->input->post('name');
 		$description =  $this->input->post('description');
 		$price = $this->input->post('price');
@@ -92,7 +94,7 @@ class Admins extends CI_Controller {
 		$quantity_sold = $this->input->post('quantity_sold');
 		$image_name = $this->input->post('image_name');
 		$this->Admin->update_product_to_db($product_name, $description,$price, $specifications,$category_id,$quantity, $quantity_sold,$image_name, $id);
-		redirect('/products/edit_product/');
+		redirect('/dashboard/products');
 	}
 
 	public function log_off(){
