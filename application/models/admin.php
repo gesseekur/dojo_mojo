@@ -19,8 +19,31 @@
 		}
 
 		public function get_all_categories(){
-			$query="SELECT (id as category_id, category_name) FROM categories";
+			$query="SELECT id as category_id, category_name as name FROM categories";
 			return $this->db->query($query)->result_array();
-
 		}
+
+		public function add_product($product_name, $description,$price,$category_id, $specifications ,$image_name){
+			$query="INSERT INTO products(name, description, price, category_id, specifications, image_name, created_at, updated_at) 
+				VALUES = (?,?,?,?,?,?, NOW(), NOW())";
+			$values = array($product_name, $description,$price,$category_id, $specifications ,$image_name);
+			return $this->db->query($query,$values);
+		}
+
+		public function add_category($new_category) {
+			$query="INSERT INTO categories(name,created_at,updated_at)
+					VALUES (?, NOW(), NOW())";
+			$values=array($new_category);
+			$this->db->query($query,$values);
+			return $this->db->insert_id();
+		}
+
+		// public function update_product($product){
+		// 	$query="UPDATE products SET products.name=?, products.description=?, 	 products.category_id=?, products.image_name=?, updated_at=NOW()
+		// 			WHERE products.id=?";
+		// 	$values=array($product['name'],$product['description'], $product['category_id'],$product['image'],$id);
+		// 	return $this->db->query($query,$values)->result_array();
+
+		// }
+
 	}

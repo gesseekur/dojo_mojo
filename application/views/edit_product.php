@@ -6,12 +6,17 @@
 </head>
 <body>
 	<h2>Edit Product- ID </h2>
-	<form method="post" action="">
+	<form method="post" action="/admins/edit_product">
 		<p>Name:<input type="text" name="name"></p>
 		<p>Description:<input type="text" name="description"></p>
 		<p>Categories:
-			<select name="category">
-				<option></option>
+				<select name="category">
+<?  		foreach ($category as $category) {
+?>
+				<option name="<?=$category['category_id']?>"><?=$category['name']?></option>
+<?
+			}
+?>
 			</select>
 		</p>
 		<p>or add new category:<input type="text" name="category"></p>

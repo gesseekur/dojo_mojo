@@ -45,6 +45,5 @@ $route['orders/show/(:any)']='admins/show_order/$1';
 $route['products/edit_product/(:any)']='admins/edit_product/$1';
 
 
-
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
