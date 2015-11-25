@@ -48,7 +48,9 @@ class Admins extends CI_Controller {
 	}
 
 	public function edit_product(){
-		$this->load->view('edit_product');
+		$category=$this->Admin->get_all_categories();
+		$output['category'] = $category;
+		$this->load->view('edit_product', $output);
 	}
 
 	public function log_off(){
