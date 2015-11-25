@@ -31,19 +31,19 @@
 		}
 
 		public function add_category($new_category) {
-			$query="INSERT INTO categories(name,created_at,updated_at)
+			$query="INSERT INTO categories(category_name,created_at,updated_at)
 					VALUES (?, NOW(), NOW())";
 			$values=array($new_category);
 			$this->db->query($query,$values);
 			return $this->db->insert_id();
 		}
 
-		// public function update_product($product){
-		// 	$query="UPDATE products SET products.name=?, products.description=?, 	 products.category_id=?, products.image_name=?, updated_at=NOW()
-		// 			WHERE products.id=?";
-		// 	$values=array($product['name'],$product['description'], $product['category_id'],$product['image'],$id);
-		// 	return $this->db->query($query,$values)->result_array();
+		public function update_product_to_db($product_name, $description,$price, $specifications,$category_id,$quantity, $quantity_sold,$image_name, $id){
+			$query="UPDATE products SET name=?,description=?, price=?, specifications=?, category_id=?, quantity=?,quantity_sold=?,image_name=?, updated_at=NOW()
+					WHERE products.id=?";
+			$values=array($product_name, $description,$price, $specifications,$category_id,$quantity, $quantity_sold,$image_name, $id);
+			return $this->db->query($query,$values);
 
-		// }
+		}
 
 	}

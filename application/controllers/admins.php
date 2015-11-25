@@ -40,14 +40,11 @@ class Admins extends CI_Controller {
 	}
 
 	public function add_product() {
-		$output= [
-			'category' =>  $this->Admin->get_all_categories()
-		];
-
+		$output['category'] = $this->Admin->get_all_categories();
 		$this->load->view('add_product', $output);
 	}
 
-	public function add_product_to_db() {
+	public function add_product_to_db(){
 		$new_category=$this->input->post('new_category');
 
 		if (strlen($new_category)) {
@@ -73,14 +70,29 @@ class Admins extends CI_Controller {
 		$this->load->view('show_order');
 	}
 
-	public function edit_product(){
-		$new_product= $this->input->post();
-		$output= [
-			'category' =>  $this->Admin->get_all_categories(),
-			// 'edits' => $this->Admin->update_product($new_product)
-		];
-
+	public function edit_product($id){
+		$output['category']= $this->Admin->get_all_categories();
+		$output['id'] = $id;
 		$this->load->view('edit_product', $output);
+	}
+
+	public function update_product_to_db($id){
+		$new_category= $this->input->post('new_category');
+		if (strlen($new_category)) {
+			$category_id= $this->Admin->add_category($new_category);
+		}
+		else {
+			$category_id= $this->input->post('category');
+		}
+		$product_name = $this->input->post('name');
+		$description =  $this->input->post('description');
+		$price = $this->input->post('price');
+		$specifications = $this->input->post('specifications');
+		$quantity = $this->input->post('quantity');
+		$quantity_sold = $this->input->post('quantity_sold');
+		$image_name = $this->input->post('image_name');
+		$this->Admin->update_product_to_db($product_name, $description,$price, $specifications,$category_id,$quantity, $quantity_sold,$image_name, $id);
+		redirect('/products/edit_product/');
 	}
 
 	public function log_off(){
