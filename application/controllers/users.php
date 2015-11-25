@@ -44,8 +44,8 @@ class Users extends CI_Controller {
 		$this->load->model('Usermodel');
 		$this->load->library("form_validation");
 		$this->form_validation->set_rules("email_address", "Email", "trim|required|is_unique[users.email]|valid_email");
-		$this->form_validation->set_rules("birthday", "Date of Birth", "trim|required");
-		$this->form_validation->set_rules("phone", "Phone No", "trim|required|alpha_dash");
+		$this->form_validation->set_rules("birthday", "Date of Birth", "trim|required|regex_match[^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$]");
+		$this->form_validation->set_rules("phone", "Phone No", "trim|required|alpha_dash|exact_length[10]");
 		$this->form_validation->set_rules("password", "Password", "required|min_length[8]");
 		$this->form_validation->set_rules("confirm_password", "confirm_Password", "required|matches[password]");		
 		if($this->form_validation->run() === FALSE)
