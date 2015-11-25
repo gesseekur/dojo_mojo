@@ -39,9 +39,10 @@
 */
 $route['default_controller'] = 'admins';
 $route['admin'] = 'admins/index';
-$route['dashboard/orders']='admins/view_orders';
+$route['dashboard/orders']='/admins/view_orders';
 $route['dashboard/products']='admins/view_products';
 $route['orders/show/(:any)']='admins/show_order/$1';
+$route['products/edit_product/(:any)']='admins/edit_product/$1';
 
 
 

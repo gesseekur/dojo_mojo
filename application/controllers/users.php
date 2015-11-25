@@ -2,48 +2,68 @@
 
 class Users extends CI_Controller {
 
+	public function index()
+	{
+		$this->load->view('homepage');
 
-	public function index() {
-		$this->load->view('admin_login');
 	}
 
-	public function validate_admin() {
-		$email = $this->input->post('email');
-		$password = md5($this->input->post('password'));
-		// $this->load->model('');
-		// $admin = $this->MODEL->admin_login($email);
-		if ($admin && $admin['password'] == $password) {	
-			// $this->load->view('view_orders');	
-			redirect('dashboard/orders');	
+	public function login()
+	{
+		$email = $this->input->post("email");
+		$password = $this->input->post("password");
+		$this->load->model('Usermodel');
+		//checks if user is in database based on correct email and password
+		$person = $this->Usermodel->get_current_user($email);
+		if($person && $person["password"] == $password)
+		{
+			$user = array(
+				"user_name" => $person["name"],
+				"user_alias" => $person["alias"],
+				"user_email" => $person["email"],
+				"user_id" => $person["id"]
+			);
+		$this->session->set_userdata($user);
+		// put the right view after this
+		// $this->load->view("books", $arrtoView);
 		}
+		else
+		{
+			$this->session->set_flashdata("login_error", "Invalid email or password!");
+			redirect("/");
+		}	
+	}
 
-		else {
-			$this->session->set_flashdata('error', "Invalid email or password!");
-			redirect('/');
+	public function register()
+	{
+		//register the user
+		$this->load->model('Usermodel');
+		$this->load->library("form_validation");
+		$this->form_validation->set_rules("email_address", "Email", "trim|required|is_unique[users.email]|valid_email");
+		$this->form_validation->set_rules("password", "Password", "required|min_length[8]");
+		$this->form_validation->set_rules("confirm_password", "confirm_Password", "required|matches[password]");		
+		if($this->form_validation->run() === FALSE)
+		{
+			$this->session->set_flashdata("registration_error", validation_errors());
+			redirect("/");
+		}
+		else
+		{
+		$user = $this->Usermodel->add_user($this->input->post());
+		$this->session->set_flashdata("success", "REGISTRATION COMPLETE YAYAYAY");
+		redirect("/");	
 		}
 	}
 
-	public function view_orders() {
-		$this->load->view('orders_page');
+	public function homepage()
+	{
+	// load the home page here 
 	}
 
-	public function view_products(){
-		$this->load->view('products_page');
-	}
-
-	public function add_product() {
-		$this->load->view('add_product');
-	}
-
-	public function show_order(){
-		$this->load->view('show_order');
-	}
-
-	public function edit_product(){
-		$this->load->view('edit_product');
-	}
-
-	public function log_off(){
-		$this->session->unset_userdata('');
+	public function logout()
+	{
+		//logout the user
+		$this->session->sess_destroy();
+		redirect("/");
 	}
 }

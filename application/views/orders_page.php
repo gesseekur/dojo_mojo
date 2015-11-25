@@ -43,13 +43,19 @@
 			</tr>
 		</thead>
 		<tbody>
+<?php 
+		foreach ($orders as $order){
+?>
 			<tr>
-				<td><a href="/orders/show/<?=$id?>"><?= $id?></a></td>
-				<td>Name</td>
-				<td>Date</td>
-				<td>Billing Address</td>
-				<td>Total</td>
+				<td><a href="/orders/show/<?=$order['id']?>"><?= $order['id']?></a></td>
+				<td><?=$order['name']?></td>
+				<td><?=$order['id']?></td>
+				<td><?=$order['id']?></td>
+				<td><?=$order['id']?></td>
 				<td>
+<?php
+		}
+?>
 				<form method="post" action="">
 				<select name="status">
 					<option>Shipped</option>
