@@ -23,10 +23,10 @@
 			return $this->db->query($query)->result_array();
 		}
 
-		public function add_product($product_name, $description,$price,$category_id, $specifications ,$image_name){
-			$query="INSERT INTO products(name, description, price, category_id, specifications, image_name, created_at, updated_at) 
-				VALUES = (?,?,?,?,?,?, NOW(), NOW())";
-			$values = array($product_name, $description,$price,$category_id, $specifications ,$image_name);
+		public function add_product($product_name, $description,$price, $quantity, $category_id, $quantity_sold, $specifications ,$image_name){
+			$query="INSERT INTO products(name, description, price, quantity, category_id, quantity_sold, specifications, image_name, created_at, updated_at) 
+				VALUES (?,?,?,?,?,?,?,?, NOW(), NOW())";
+			$values = array($product_name, $description,$price, $quantity,$category_id, $quantity_sold, $specifications,$image_name);
 			return $this->db->query($query,$values);
 		}
 

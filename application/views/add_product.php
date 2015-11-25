@@ -22,6 +22,7 @@
 			</select>
 		</p>
 		<p>or add new category:<input type="text" name="new_category"></p>
+		<p>Quantity <input type="text" name="quantity"></p>
 		<p>Images <input type="text" name="image_name"></p>
 		<a href="/dashboard/products">Cancel</a>
 		<input type="submit" value="Preview" name="preview">

@@ -61,8 +61,10 @@ class Admins extends CI_Controller {
 		$description =  $this->input->post('description');
 		$price = $this->input->post('price');
 		$specifications = $this->input->post('specifications');
+		$quantity = $this->input->post('quantity');
+		$quantity_sold = 0;
 		$image_name = $this->input->post('image_name');
-		$this->Admin->add_product($product_name, $description,$price,$category_id, $specifications ,$image_name);
+		$this->Admin->add_product($product_name, $description,$price, $quantity,$category_id, $quantity_sold, $specifications,$image_name);
 		redirect('/admins/add_product');
 	}
 
@@ -71,7 +73,7 @@ class Admins extends CI_Controller {
 		$this->load->view('show_order');
 	}
 
-	public function edit_product($id){
+	public function edit_product(){
 		$new_product= $this->input->post();
 		$output= [
 			'category' =>  $this->Admin->get_all_categories(),
