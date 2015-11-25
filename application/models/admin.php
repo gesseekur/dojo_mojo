@@ -19,7 +19,7 @@
 		}
 
 		public function get_all_categories(){
-			$query="SELECT (id as category_id, category_name)";
+			$query="SELECT (id as category_id, category_name) FROM categories";
 			return $this->db->query($query)->result_array();
 
 		}
