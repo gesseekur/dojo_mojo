@@ -22,7 +22,7 @@
 	<form method="post" action="">
 		<input id="search" type="text" value="search" name="search">
 	</form>
-	<form method="post" action="">
+	<form method="post" action="/admins/add_product">
 		<input id="add" type="submit" name="submit" value="Add a new product">
 	</form>
 	</div>
@@ -50,7 +50,7 @@
 				<td><?=$product['quantity_sold']?></td>
 				<td>
 					<a href="/products/edit_product/<?=$product['id']?>">edit</a>
-					<a href="">delete</a>
+					<a href="/admins/delete_product/<?=$product['id']?>">delete</a>
 				</td>
 			</tr>
 <?php

@@ -34,6 +34,11 @@ class Admins extends CI_Controller {
 		$this->load->view('products_page',$output);
 	}
 
+	public function delete_product($id) {
+		$delete= $this->Admin->delete_product($id);
+		redirect('/dashboard/products');
+	}
+
 	public function add_product() {
 		$this->load->view('add_product');
 	}

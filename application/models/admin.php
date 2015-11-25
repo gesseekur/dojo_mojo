@@ -11,4 +11,16 @@
 			$query="SELECT * FROM products";
 			return $this->db->query($query)->result_array();
 		}
+
+		public function delete_product($id){
+			$query="DELETE FROM products WHERE id=?";
+			$values=array($id);
+			return $this->db->query($query,$values);
+		}
+
+		public function get_all_categories(){
+			$query="SELECT (id as category_id, category_name)";
+			return $this->db->query($query)->result_array();
+
+		}
 	}
