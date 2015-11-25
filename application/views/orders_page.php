@@ -22,10 +22,10 @@
 </head>
 <body>
 	<?= $this->load->view('partials/nav_bar')?>
-	<form method="post" action="">
+	<form method="post" action="/admins/view_orders">
 		<input id="search" type="text" value="search" name="search">
 		<select name="status">
-			<option>Show All</option>
+			<option value=>Show All</option>
 			<option>Order in Process</option>
 			<option>Shipped</option>
 			<option>Cancelled</option>
@@ -49,23 +49,23 @@
 			<tr>
 				<td><a href="/orders/show/<?=$order['id']?>"><?= $order['id']?></a></td>
 				<td><?=$order['name']?></td>
-				<td><?=$order['id']?></td>
+				<td><?=$order['created_at']?></td>
 				<td><?=$order['id']?></td>
 				<td><?=$order['id']?></td>
 				<td>
-<?php
-		}
-?>
-				<form method="post" action="">
+		<form method="post" action="/admins/edit_category">
 				<select name="status">
-					<option>Shipped</option>
+					<option><?=$order['status']?></option>
 					<option>Order in Process</option>
 					<option>Cancelled</option>
 				</select>
-				</form>
+		</form>
 				</td>
 			</tr>
-
+<?php
+		}
+?>
+		
 		</tbody>
 
 	</table>

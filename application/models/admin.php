@@ -12,6 +12,27 @@
 			return $this->db->query($query)->result_array();
 		}
 
+		public function view_orders() {
+			$query="SELECT orders.id, users.name, DATE_FORMAT(users.created_at, '%c/%e/%Y') as created_at, orders.status FROM orders
+					LEFT JOIN users ON orders.user_id = users.id ";
+			return $this->db->query($query)->result_array();
+		}
+
+		public function search_orders($status){
+			$query="SELECT orders.id, users.name, DATE_FORMAT(users.created_at, '%c/%e/%Y') as created_at, orders.status FROM orders
+					LEFT JOIN users ON orders.user_id = users.id 
+					WHERE orders.status=?";
+			$values=array($status);
+			return $this->db->query($query,$values)->result_array();
+		}
+
+
+		public function edit_category($status){
+			$query="UPDATE orders SET status=?";
+			$values=array($status);
+			return $this->db->query($query,$values);
+		}
+
 		public function delete_product($id){
 			$query="DELETE FROM products WHERE id=?";
 			$values=array($id);
@@ -49,7 +70,7 @@
 					WHERE products.id=?";
 			$values=array($product_name, $description,$price, $specifications,$category_id,$quantity, $quantity_sold,$image_name, $id);
 			return $this->db->query($query,$values);
-
 		}
+
 
 	}
