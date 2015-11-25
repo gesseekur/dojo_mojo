@@ -5,9 +5,6 @@
 	background-image: url("black_samurai_sword.jpg");
 	height: 93px;
 }
-h1{
-	margin-top: 60px;
-}
 h2, #store_link{
 	display: inline-block;
 	margin-top: 60px;
@@ -28,22 +25,13 @@ a, p, input, #logout{
 h1, h3, p{
 	text-align: center;
 }
-.shopping_cart{
-	float: right;
-	border-radius: 100px;
-	background-color: #CCA300;
-	border: none;
-}
 h1, h2, h3{
 	font-family: 'Inconsolata', serif;
+/*    font-size: 40px;*/
     color: blue;
-}
-#product_image{
-	padding-left: 100px;
 }
 label{
 	padding-left: 100px;
-	color: black;
 }
 input{
 	margin-left: 130px;

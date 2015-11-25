@@ -34,7 +34,7 @@
                     <div class = "col-md-2"> 
                     </div>   
                     <div class = "col-md-6">
-                        <img src = "/assets/weapons_icons/large/1.png">
+                        <img src = "/assets/weapons_icons/large/1.png" alt = "product/id" class="img-thumbnail">
                     </div>
                     <div class = "col-md-4">
                         <div id = "product_desc">
@@ -42,7 +42,7 @@
                             <p>Ontgonnen perzische in herhaling nu honderden belasting. Bevaarbaar schipbreuk kilometers af al uitgevoerd. In zand alle daad na doet gold waar. Stam twee aan koel zijn aard met geld. Op geslaagd nu trouwens omgeving na omwonden de wakkeren. Oven acre sago in de tijd op wijk.</p>
                         <div></p>
                         </div>
-                            <h3>Specs</h3>
+                            <h3>Specs:  </h3>
                             <p>STRENGTH ==</p>
                         </div>
                         <label>Quantity</label>
