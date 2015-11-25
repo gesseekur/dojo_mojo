@@ -4,7 +4,7 @@ class Users extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('homepage');
+		$this->load->view('user_login');
 
 	}
 
