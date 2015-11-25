@@ -12,9 +12,9 @@ class Users extends CI_Controller {
 	{
 		$email = $this->input->post("email");
 		$password = $this->input->post("password");
-		$this->load->model('Usermodel');
+		$this->load->model('User');
 		//checks if user is in database based on correct email and password
-		$person = $this->Usermodel->get_current_user($email);
+		$person = $this->User->get_current_user($email);
 		if($person && $person["password"] == $password)
 		{
 			$user = array(
@@ -41,11 +41,11 @@ class Users extends CI_Controller {
 	public function register()
 	{
 		//register the user and adds to the validation error array which input is showing the error
-		$this->load->model('Usermodel');
+		$this->load->model('User');
 		$this->load->library("form_validation");
-		$this->form_validation->set_rules("email_address", "Email", "trim|required|is_unique[users.email]|valid_email");
-		$this->form_validation->set_rules("birthday", "Date of Birth", "trim|required|regex_match[^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$]");
-		$this->form_validation->set_rules("phone", "Phone No", "trim|required|alpha_dash|exact_length[10]");
+		$this->form_validation->set_rules("email", "Email", "trim|required|is_unique[users.email]|valid_email");
+		$this->form_validation->set_rules("date_of_birth", "Date of Birth", "trim|required|regex_match[^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$]");
+		$this->form_validation->set_rules("phone", "Phone No", "trim|required");
 		$this->form_validation->set_rules("password", "Password", "required|min_length[8]");
 		$this->form_validation->set_rules("confirm_password", "confirm_Password", "required|matches[password]");		
 		if($this->form_validation->run() === FALSE)
@@ -55,7 +55,7 @@ class Users extends CI_Controller {
 		}
 		else
 		{
-		$user = $this->Usermodel->add_user($this->input->post());
+		$user = $this->User->add_user($this->input->post());
 		$this->session->set_flashdata("success", "REGISTRATION COMPLETE YAYAYAY");
 		redirect("/");	
 		}

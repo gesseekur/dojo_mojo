@@ -21,6 +21,10 @@
                 <div class="row">
                   <div class="col-md-6">
                     <h1>Register</h1>
+                    <h1>
+                      <?= $this->session->flashdata("registration_error") ?>
+                      <?= $this->session->flashdata("success") ?>
+                    </h1>
                     <form action="users/register" method="POST">
                       <div class="form-group">
                         <label for="name">Name:</label>
@@ -35,16 +39,20 @@
                         <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email">
                       </div>
                       <div class="form-group">
+                        <label for="phone">Phone Number:</label>
+                        <input type="tel" pattern='\d{1}[\(]\d{3}[\)]\d{3}[\-]\d{4}' class="form-control" id="phone" name="phone" placeholder = "1(123)456-7890">
+                      </div>
+                      <div class="form-group">
+                        <label for="date_of_birth">Date of Birth:</label>
+                        <input type="date" class="form-control" id="date_of_birth" name="date_of_birth">
+                      </div>
+                      <div class="form-group">
                         <label for="password">Password:</label>
                         <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                       </div>
                       <div class="form-group">
                         <label for="confirm_password">Confirm Password:</label>
                         <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Password">
-                      </div>
-                      <div class="form-group">
-                        <label for="date_of_birth">Date of Birth:</label>
-                        <input type="date" class="form-control" id="date_of_birth" name="date_of_birth">
                       </div>
                       <input type="submit" class="btn btn-info" value="Register">
                     </form>
