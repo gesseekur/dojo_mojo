@@ -1,9 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 	class Admin extends CI_Model{
-		public function admin_login($email){
-			$query="SELECT * FROM users WHERE email=?";
-			$values=array($email);
+		public function admin_login($email, $password){
+			$query="SELECT * FROM users WHERE email=? && password = ?";
+			$values=array($email, $password);
 			return $this->db->query($query,$values)->row_array();
 		}
 
@@ -18,13 +18,17 @@
 			return $this->db->query($query)->result_array();
 		}
 
-		public function search_orders($status){
-			$query="SELECT orders.id, users.name, DATE_FORMAT(users.created_at, '%c/%e/%Y') as created_at, orders.status FROM orders
-					LEFT JOIN users ON orders.user_id = users.id 
-					WHERE orders.status=?";
-			$values=array($status);
+		public function search_orders($search){
+			$query="SELECT orders.id, users.name, DATE_FORMAT(orders.created_at, '%c/%e/%Y') as created_at, orders.status FROM orders
+				LEFT JOIN users ON orders.user_id = users.id 
+				WHERE name LIKE ? OR orders.id LIKE ? OR orders.created_at LIKE ? OR orders.status LIKE ?"; 
+			$values=array("%" . $search . "%","%" . $search . "%","%" . $search . "%","%" . $search . "%");
 			return $this->db->query($query,$values)->result_array();
 		}
+
+		// public function select_status() {
+		// 	$query="SELECT status FROM "
+		// }
 
 
 		public function edit_category($status){
