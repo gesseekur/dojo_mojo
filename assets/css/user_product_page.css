@@ -41,10 +41,13 @@ h1, h2, h3{
 #product_image{
 	padding-left: 100px;
 }
+#product_desc{
+	padding-top: 125px;
+}
 label{
-	padding-left: 100px;
+	margin-left: 115px;
 	color: black;
 }
 input{
-	margin-left: 130px;
+	margin-left: 140px;
 }

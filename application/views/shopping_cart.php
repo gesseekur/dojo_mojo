@@ -18,29 +18,28 @@
     <div class = "container">    
     <div class="page-header">
         <h2>dojo_Mojo</h2>
-        <a id = "store_link" href="">Back to dojo_Mojo Store</a>
-<!--         <button type="button" class="shopping_cart btn-lg" href = " " aria-label="Shopping Cart">
+        <button type="button" class="shopping_cart btn-lg" href = " " aria-label="Shopping Cart">
             <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-        </button> -->
+            <span class= "badge">7</span>
+        </button>
         <form id = "logout" action = "/user/logout" method = "POST">
             <input type = "submit" value = "Logout">
         </form>
     </div>
 	<div id="top">
 	<form method="post" action="">
-		<input id="search" type="text" value="search" name="search">
+		<input id="search" type="text" value="Search" name="search">
 	</form>
 	</div>
 
 	<table class = "table table-striped">
 		<thead>
 			<tr>
-				<td>Picture</td>
-				<td>ID</td>
-				<td>Name</td>
-				<td>Inventory Count</td>
-				<td>Quantity sold</td>
-				<td>Action</td>
+				<th>Item</th>
+				<th>Name</th>
+				<th>Price</th>
+				<th>Quantity</th>
+				<th>Total</th>
 			</tr>
 		</thead>
 <!-- 		<tbody>
@@ -49,20 +48,20 @@
 ?>
 			<tr>
 				<td>IMAGE</td>
-				<td><?=$product['id']?></td>
 				<td><?=$product['name']?></td>
-				<td><?=$product['quantity']?></td>
-				<td><?=$product['quantity_sold']?></td>
-				<td>
-					<a href="/products/edit_product/<?=$product['id']?>">edit</a>
+				<td><?=$product['price']?></td>
+				<td><?=$product['quantity']?><a href="/products/edit_product/<?=$product['id']?>">edit</a>
 					<a href="/admins/delete_product/<?=$product['id']?>">delete</a>
-				</td>
+				</td>	
+				<td><?=$product['total']?></td>
 			</tr>
 <?php
 		}
 ?> 
+			<td><?=$product['total']?>Grand Total</td>
 		</tbody> -->
 
 	</table>
+	<a id = "store_link" href="">Continue Shopping</a>
 </body>
 </html>

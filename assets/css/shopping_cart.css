@@ -9,8 +9,11 @@ h2, #store_link{
 	display: inline-block;
 	margin-top: 60px;
 }
-#store_link{
-	margin-left: 340px;
+.shopping_cart{
+	float: right;
+	border-radius: 100px;
+	background-color: #CCA300;
+	border: none;
 }
 #logout{
 	text-align: right;
@@ -33,6 +36,6 @@ h1, h2, h3{
 label{
 	padding-left: 100px;
 }
-input{
-	margin-left: 130px;
+#store_link{
+	float: right;
 }
