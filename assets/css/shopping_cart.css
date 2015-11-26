@@ -2,7 +2,7 @@
 /*	border: 1px solid black;*/
 }
 .page-header{
-	background-image: url("black_samurai_sword.jpg");
+	background-image: url("/assets/img/black_samurai_sword.jpg");
 	height: 93px;
 }
 h2, #store_link{
