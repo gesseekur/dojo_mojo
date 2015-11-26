@@ -22,14 +22,15 @@
 </head>
 <body>
 	<?= $this->load->view('partials/nav_bar')?>
-	<form method="post" action="/admins/view_orders">
-		<input id="search" type="text" value="search" name="search">
+	<form method="post" action="/admins/search_orders">
+		<input type="text" name="search_orders">
 		<select name="status">
-			<option value=>Show All</option>
+			<option>Show All</option>
 			<option>Order in Process</option>
-			<option>Shipped</option>
+			<option>Shipping</option>
 			<option>Cancelled</option>
 		</select>
+		<input type="submit" value="search">
 	</form>
 	<table>
 		<thead>

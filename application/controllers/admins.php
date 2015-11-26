@@ -10,10 +10,10 @@ class Admins extends CI_Controller {
 	public function validate_admin() {
 		$email = $this->input->post('email');
 		$password = $this->input->post('password');
-		$admin = $this->Admin->admin_login($email);
+		$admin = $this->Admin->admin_login($email, $password);
 		// var_dump($admin);
 		// die();
-		if ($admin && $admin['password'] == $password && $admin['roles'] == "1") {	
+		if ($admin && $admin['roles'] == "1") {	
 			// $this->load->view('view_orders');	
 			redirect('/dashboard/orders');	
 		}
@@ -25,29 +25,19 @@ class Admins extends CI_Controller {
 	}
 
 	public function view_orders() {
-		if ($this->input->post('status')) {
-			$ouput['status']= $this->input->post('status');
-			$orders = $this->Admin->search_orders();
-			$output['orders'] = $orders;
-		}
-		else {
-				$orders = $this->Admin->view_orders();
-				$output['orders'] = $orders;
-		}
-		$this->Admin->search_orders($status);
+		$orders = $this->Admin->view_orders();
+		$output['orders'] = $orders;
 		$this->load->view('orders_page', $output);
 	}
 
-	// public function search_orders() {
-	// 	// if ($this->input->post('search')) {
-	// 	// 	$output['status'] = $this->input->post('search');
-	// 	// }
-	// 	if ($this->input->post('status')) {
-	// 		$status= $this->input->post('status');
-	// 	}
-	// 	$this->Admin->search_orders($status);
+	public function search_orders() {
+		$search = $this->input->post('search_orders');
+		$result=$this->Admin->search_orders($search);
+		var_dump($result);
+		die();
 
-	// }
+
+	}
 
 	public function edit_category() {
 		$status = $this->input->post('status');
