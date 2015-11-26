@@ -24,7 +24,8 @@
 	<?= $this->load->view('partials/nav_bar')?>
 	<form method="post" action="/admins/search_orders">
 		<input type="text" name="search_orders">
-		<select name="status">
+		<input type="submit" value="search">
+		<select name="search_orders">
 			<option>Show All</option>
 			<option>Order in Process</option>
 			<option>Shipping</option>
@@ -54,21 +55,32 @@
 				<td><?=$order['id']?></td>
 				<td><?=$order['id']?></td>
 				<td>
-		<form method="post" action="/admins/edit_category">
+
+		<form method="post" action="">
 				<select name="status">
 					<option><?=$order['status']?></option>
-					<option>Order in Process</option>
-					<option>Cancelled</option>
-				</select>
-		</form>
-				</td>
-			</tr>
 <?php
+		foreach ($status as $stat){
+			if ($order['status'] == $stat['status']) {
+			}
+			else {
+?>
+					<option><?=$stat['status']?></option>
+<?php
+			}
 		}
 ?>
-		
+				</select>
+			<input type="submit" value="submit">
+		</form>
+<?php
+		}
+?>	
+				</td>
+			</tr>
+	
 		</tbody>
-
 	</table>
+
 </body>
 </html>

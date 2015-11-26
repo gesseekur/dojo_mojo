@@ -24,9 +24,10 @@ class Admins extends CI_Controller {
 		}
 	}
 
-	public function view_orders() {
-		$orders = $this->Admin->view_orders();
-		$output['orders'] = $orders;
+	public function view_orders() {	
+		$output['status'] = $this->Admin->select_status();
+		$output['orders'] = $this->Admin->view_orders();
+
 		$this->load->view('orders_page', $output);
 	}
 
@@ -35,9 +36,19 @@ class Admins extends CI_Controller {
 		$result=$this->Admin->search_orders($search);
 		var_dump($result);
 		die();
-
-
 	}
+
+	public function search_products() {
+		$search = $this->input->post('search_products');
+		$result=$this->Admin->search_products($search);
+		var_dump($result);
+		die();
+	}
+
+	// public function search_status() {
+	// 	$search= $this->input->post('status');
+		
+	// }
 
 	public function edit_category() {
 		$status = $this->input->post('status');

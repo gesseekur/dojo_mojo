@@ -26,9 +26,17 @@
 			return $this->db->query($query,$values)->result_array();
 		}
 
-		// public function select_status() {
-		// 	$query="SELECT status FROM "
-		// }
+		public function search_products($search){
+			$query="SELECT id, name, quantity, quantity_sold FROM products
+					WHERE id LIKE ? OR name LIKE ? OR quantity LIKE ? OR quantity_sold LIKE ?"; 
+			$values=array("%" . $search . "%","%" . $search . "%","%" . $search . "%","%" . $search . "%");
+			return $this->db->query($query,$values)->result_array();
+		}
+
+		public function select_status() {
+			$query="SELECT status FROM orders";
+			return $this->db->query($query)->result_array();
+		}
 
 
 		public function edit_category($status){

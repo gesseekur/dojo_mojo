@@ -19,8 +19,9 @@
 <body>
 	<?= $this->load->view('partials/nav_bar')?>
 	<div id="top">
-	<form method="post" action="">
-		<input id="search" type="text" value="search" name="search">
+	<form method="post" action="/admins/search_products">
+		<input type="text" name="search_products">
+		<input type="submit" value="Search" name="search">
 	</form>
 	<form method="post" action="/admins/add_product">
 		<input id="add" type="submit" name="submit" value="Add a new product">
