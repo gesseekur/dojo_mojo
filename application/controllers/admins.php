@@ -25,7 +25,33 @@ class Admins extends CI_Controller {
 	}
 
 	public function view_orders() {
-		$this->load->view('orders_page');
+		if ($this->input->post('status')) {
+			$ouput['status']= $this->input->post('status');
+			$orders = $this->Admin->search_orders();
+			$output['orders'] = $orders;
+		}
+		else {
+				$orders = $this->Admin->view_orders();
+				$output['orders'] = $orders;
+		}
+		$this->Admin->search_orders($status);
+		$this->load->view('orders_page', $output);
+	}
+
+	// public function search_orders() {
+	// 	// if ($this->input->post('search')) {
+	// 	// 	$output['status'] = $this->input->post('search');
+	// 	// }
+	// 	if ($this->input->post('status')) {
+	// 		$status= $this->input->post('status');
+	// 	}
+	// 	$this->Admin->search_orders($status);
+
+	// }
+
+	public function edit_category() {
+		$status = $this->input->post('status');
+		$this->Admin->edit_category($status);
 	}
 
 	public function view_products(){
@@ -96,6 +122,7 @@ class Admins extends CI_Controller {
 		$this->Admin->update_product_to_db($product_name, $description,$price, $specifications,$category_id,$quantity, $quantity_sold,$image_name, $id);
 		redirect('/dashboard/products');
 	}
+
 
 	public function log_off(){
 		$this->session->unset_userdata('');
