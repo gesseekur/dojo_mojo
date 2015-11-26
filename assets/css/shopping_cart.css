@@ -1,0 +1,41 @@
+*{
+/*	border: 1px solid black;*/
+}
+.page-header{
+	background-image: url("black_samurai_sword.jpg");
+	height: 93px;
+}
+h2, #store_link{
+	display: inline-block;
+	margin-top: 60px;
+}
+.shopping_cart{
+	float: right;
+	border-radius: 100px;
+	background-color: #CCA300;
+	border: none;
+}
+#logout{
+	text-align: right;
+	border: white;
+	background-color: white;
+}
+a, p, input, #logout{
+	font-family: 'Shadows Into Light', serif;
+    font-size: 20px;
+    color: #CCA300;
+}
+h1, h3, p{
+	text-align: center;
+}
+h1, h2, h3{
+	font-family: 'Inconsolata', serif;
+/*    font-size: 40px;*/
+    color: blue;
+}
+label{
+	padding-left: 100px;
+}
+#store_link{
+	float: right;
+}
