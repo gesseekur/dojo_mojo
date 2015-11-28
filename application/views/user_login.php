@@ -59,7 +59,7 @@
                   </div>
                   <div class="col-md-6">
                     <h1>Sign In</h1>
-                    <form action="users/login" method="POST">
+                    <form action="homepage" method="POST">
                       <div class="form-group">
                         <label for="email">Email address:</label>
                         <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email">
