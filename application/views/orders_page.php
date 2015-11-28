@@ -19,7 +19,7 @@
 	<?= $this->load->view('partials/nav_bar')?>
 	<div class = "container">
 	<form method="post" action="/admins/search_orders">
-		<input id="search" type="text" value="Search" name="search">
+		<input id="search" type="text" placeholder="Search" name="search">
 		<select name="search_orders">
 			<option>Show All</option>
 			<option>Order in Process</option>
