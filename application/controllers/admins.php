@@ -45,10 +45,6 @@ class Admins extends CI_Controller {
 		die();
 	}
 
-	// public function search_status() {
-	// 	$search= $this->input->post('status');
-		
-	// }
 
 	public function edit_category() {
 		$status = $this->input->post('status');
