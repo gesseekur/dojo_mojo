@@ -124,7 +124,13 @@ class Admins extends CI_Controller {
 		redirect('/dashboard/products');
 	}
 
-
+	// displays the show page when the admin clicks the order number and displays all the info about the user and the products they bought
+	public function show_order_id($id)
+	{
+		$output["infos"] = $this->Admin->show_orders($id);
+		$this->load->view('show_order.php', $output);
+	}
+	
 	public function log_off(){
 		$this->session->unset_userdata('');
 	}
