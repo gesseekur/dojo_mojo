@@ -28,7 +28,7 @@ class Users extends CI_Controller {
 			);
 		$this->session->set_userdata($user);
 		// put the right view after this
-		// $this->load->view("books", $arrtoView);
+		$this->load->view("homepage.php");
 		}
 		else
 		{
