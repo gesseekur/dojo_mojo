@@ -24,22 +24,18 @@
 </head>
 <body>
 	<?= $this->load->view('partials/nav_bar')?>
-
+<?php 
+		foreach ($infos as $info)
+		{
+?>
 	<div id="info">
-		<p>Order ID: 1</p>
-		<h4>Customer Shipping info:</h4>
-		Name: <br>
-		Address: <br>
-		City: <br>
-		State: <br>
-		Zipcode: <br>
-
+		<p>Order ID: <?= $info['id']?></p>
 		<h4>Customer Billing info: </h4>
-		Name:  <br>
-		Address: <br>
-		City: <br>
-		State: <br>
-		Zipcode: <br>
+		Name: <?= $info['user']?><br>
+		Address: <?= $info['street']?><br>
+		City: <?= $info['city']?><br>
+		State: <?= $info['state']?><br>
+		Zipcode: <?= $info['zip']?><br>
 	</div>
 
 		<table>
@@ -54,23 +50,26 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td>35</td>
-				<td>cup</td>
-				<td>1.99</td>
-				<td>1</td>
-				<td>Total</td>
+				<td><?= $info['id']?></td>
+				<td><?= $info['item']?></td>
+				<td><?= $info['price']?></td>
+				<td><?= $info['quantity']?></td>
+				<td><?= $info['price'] * $info['quantity']?></td>
 			</tr>
 		</tbody>
 	</table>
 
 	<div id="status">
-		<h4>Status:</h4>
+		<h4>Status: <?= $info['status']?></h4>
 	</div>
 
 	<div id="total">
-		<p>Sub total:</p>
-		<p>Shipping:</p>
-		<p>Total Price:</p>
+		<p>Sub total: <?= $info['price'] * $info['quantity']?></p>
+		<p>Shipping: FREE!
+		<p>Total Price: <?= $info['price'] * $info['quantity']?></p>
 	</div>
+<?php
+		}
+?>	
 </body>
 </html>

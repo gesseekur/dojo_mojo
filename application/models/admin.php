@@ -84,5 +84,16 @@
 			return $this->db->query($query,$values);
 		}
 
+		public function show_orders($order_id)
+		{
+			$query = "SELECT address.name as user, address.street, address.city, address.zip, address.state, products.name as item, products.price, products.quantity, orders.status, orders.id as id
+ 						FROM orders
+ 						LEFT JOIN address on orders.user_id = address.user_id
+ 						LEFT JOIN order_details on orders.id = order_details.order_id
+ 						LEFT JOIN products on order_details.product_id = products.id
+ 						WHERE orders.id = ? ";
+ 			$values = array($order_id);
+ 			return $this->db->query($query, $values) -> result_array();
+		}
 
 	}
