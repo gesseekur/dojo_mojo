@@ -8,7 +8,7 @@
 		}
 
 		public function view_products(){
-			$query="SELECT * FROM products";
+			$query="SELECT categories.category_name, products.image_name, products.id, products.name, products.quantity, products.quantity_sold FROM products LEFT JOIN categories on products.category_id = categories.id LIMIT 5 ";
 			return $this->db->query($query)->result_array();
 		}
 
@@ -72,7 +72,7 @@
 		}
 
 		public function select_product($id) {
-			$query= "SELECT * FROM products WHERE id=?";
+			$query= "SELECT * FROM products LEFT JOIN categories on products.category_id = categories.id WHERE products.id=?";
 			$values=array($id);
 			return $this->db->query($query,$values)->row_array();
 		}
