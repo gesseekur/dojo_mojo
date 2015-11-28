@@ -25,7 +25,7 @@
                 <span class="glyphicon glyphicon-shopping-cart btn-md" aria-hidden="true"></span>
                 <span class= "badge">7</span>
             </button>
-            <form id = "logout" action = "/user/logout" method = "POST">
+            <form id = "logout" action = "/users/logout" method = "POST">
                 <input type = "submit" value = "Logout">
             </form>
         </div>

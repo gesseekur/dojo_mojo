@@ -37,7 +37,11 @@
 | in the URL cannot be matched to a valid route.
 |
 */
+<<<<<<< HEAD
 $route['default_controller'] = 'users';
+=======
+$route['default_controller'] = 'temp';
+>>>>>>> admin_dashboard_products
 $route['admin'] = 'admins/index';
 $route['homepage'] = 'users/login';
 $route['dashboard/orders']='/admins/view_orders';

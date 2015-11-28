@@ -22,12 +22,12 @@
             <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
             <span class= "badge">7</span>
         </button>
-        <form id = "logout" action = "/user/logout" method = "POST">
+        <form id = "logout" action = "/users/logout" method = "POST">
             <input type = "submit" value = "Logout">
         </form>
     </div>
 	<div id="top">
-	<form method="post" action="">
+	<form method="post" action="/products/search">
 		<input id="search" type="text" value="Search" name="search">
 	</form>
 	</div>

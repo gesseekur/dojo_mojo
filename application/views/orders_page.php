@@ -3,45 +3,39 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Dashboard Orders</title>
-	<style type="text/css">
-		table {
-			border:1px solid black;
-			margin-top:10px;
-		}
-
-		thead {
-			background-color: silver;
-		}
-
-		#search {
-			border-radius:4px;
-			margin-top: 10px;
-		}
-
-	</style>
+    <meta http-equiv="refresh" content="25">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link hrel="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href = "assets/css/orders_page.css">
+    <link href='https://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Inconsolata:700' rel='stylesheet' type='text/css'>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+    </script>
 </head>
 <body>
 	<?= $this->load->view('partials/nav_bar')?>
+	<div class = "container">
 	<form method="post" action="/admins/search_orders">
-		<input type="text" name="search_orders">
-		<input type="submit" value="search">
+		<input id="search" type="text" value="Search" name="search">
 		<select name="search_orders">
 			<option>Show All</option>
 			<option>Order in Process</option>
 			<option>Shipping</option>
 			<option>Cancelled</option>
 		</select>
-		<input type="submit" value="search">
 	</form>
-	<table>
+	<table class = "table table-striped">
 		<thead>
 			<tr>
-				<td>Order ID</td>
-				<td>Name</td>
-				<td>Date</td>
-				<td>Billing Address</td>
-				<td>Total</td>
-				<td>Status</td>
+				<th>Order ID</th>
+				<th>Name</th>
+				<th>Date</th>
+				<th>Billing Address</th>
+				<th>Total</th>
+				<th>Status</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -81,6 +75,6 @@
 	
 		</tbody>
 	</table>
-
+	</div>
 </body>
 </html>
