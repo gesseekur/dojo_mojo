@@ -45,10 +45,6 @@ class Admins extends CI_Controller {
 		die();
 	}
 
-	// public function search_status() {
-	// 	$search= $this->input->post('status');
-		
-	// }
 
 	public function edit_category() {
 		$status = $this->input->post('status');
@@ -93,10 +89,6 @@ class Admins extends CI_Controller {
 	}
 
 
-	public function show_order(){
-		$this->load->view('show_order');
-	}
-
 	public function edit_product($id){
 		$output['category']= $this->Admin->get_all_categories();
 		$output['id'] = $id;
@@ -130,6 +122,7 @@ class Admins extends CI_Controller {
 		$output["infos"] = $this->Admin->show_orders($id);
 		$this->load->view('show_order.php', $output);
 	}
+
 	
 	public function log_off(){
 		$this->session->unset_userdata('');

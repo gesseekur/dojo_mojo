@@ -44,7 +44,7 @@
 		foreach ($products as $product){
 ?>
 			<tr>
-				<td>IMAGE</td>
+				<td><img height="40" width="40" src="/assets/<?=$product['category_name']?>_icons/solid/<?=$product['image_name']?>.png"></td>
 				<td><?=$product['id']?></td>
 				<td><?=$product['name']?></td>
 				<td><?=$product['quantity']?></td>
@@ -58,7 +58,12 @@
 		}
 ?> 
 		</tbody>
-
 	</table>
+	<a href="">1</a>
+	<a href="">2</a>
+	<a href="">3</a>
+	<a href="">4</a>
+	<a href="">5</a>
+	<a href="">6</a>
 </body>
 </html>
