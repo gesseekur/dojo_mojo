@@ -2,7 +2,6 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="refresh" content="25">
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link hrel="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -18,7 +17,7 @@
     <div class = "container">    
     <div class="page-header">
         <h2>dojo_Mojo</h2>
-        <button type="button" class="shopping_cart btn-lg" href = " " aria-label="Shopping Cart">
+        <button type="button" class="shopping_cart btn-lg" href = "#" aria-label="Shopping Cart">
             <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
             <span class= "badge">7</span>
         </button>
