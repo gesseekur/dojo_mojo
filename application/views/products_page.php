@@ -4,39 +4,34 @@
 	<meta charset="UTF-8">
 	<title>Dashboard Products</title>
 	<style type="text/css">
-		table {
-			border:1px solid black;
-			margin-top:10px;
-			text-align: center;
+		form{
+			display: inline;
 		}
-
-		thead {
-			background-color: silver;
+		#add{
+			margin: 2px 0  0 706px;
+			background-color: white;
+			border: none;
 		}
-	
 	</style>
 </head>
 <body>
 	<?= $this->load->view('partials/nav_bar')?>
-	<div id="top">
-	<form method="post" action="/admins/search_products">
-		<input type="text" name="search_products">
-		<input type="submit" value="Search" name="search">
+	<div class = "container">
+	<form method="post" action="/admins/search_orders">
+		<input id="search" type="text" placeholder="Search" name="search">
 	</form>
 	<form method="post" action="/admins/add_product">
 		<input id="add" type="submit" name="submit" value="Add a new product">
 	</form>
-	</div>
-
-	<table>
+	<table class = "table table-striped">
 		<thead>
 			<tr>
-				<td>Picture</td>
-				<td>ID</td>
-				<td>Name</td>
-				<td>Inventory Count</td>
-				<td>Quantity sold</td>
-				<td>Action</td>
+				<th>Picture</th>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Inventory Count</th>
+				<th>Quantity Sold</th>
+				<th>Action</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -65,5 +60,6 @@
 	<a href="">4</a>
 	<a href="">5</a>
 	<a href="">6</a>
+</div>	
 </body>
 </html>

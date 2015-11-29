@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
 	<title>Dashboard Orders</title>
-    <meta http-equiv="refresh" content="25">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link hrel="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href = "assets/css/orders_page.css">
-    <link href='https://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Inconsolata:700' rel='stylesheet' type='text/css'>
-    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-    </script>
+    <style type="text/css">
+    select, input{
+		display: inline-block;
+	}
+	select{
+		float: right;
+	}
+    </style>
 </head>
 <body>
 	<?= $this->load->view('partials/nav_bar')?>

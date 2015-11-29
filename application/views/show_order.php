@@ -3,27 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title>View Order</title>
-	<style type="text/css">
-		div {
-			border:1px solid black;
-			display: inline-block;
-			padding: 10px;		
-		}
-
-		table {
-			border:1px solid black;
-			margin-top:10px;
-			border-collapse:collapse;
-		}
-
-		thead {
-			background-color: silver;
-		}
-	</style>
-
 </head>
 <body>
 	<?= $this->load->view('partials/nav_bar')?>
+	<div class = "container">
 <?php 
 		foreach ($infos as $info)
 		{
@@ -38,14 +21,14 @@
 		Zipcode: <?= $info['zip']?><br>
 	</div>
 
-		<table>
+		<table "table table-striped">
 		<thead>
 			<tr>
-				<td>ID</td>
-				<td>Item</td>
-				<td>Price</td>
-				<td>Quantity</td>
-				<td>Total</td>
+				<th>ID</th>
+				<th>Item</th>
+				<th>Price</th>
+				<th>Quantity</th>
+				<th>Total</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -71,5 +54,6 @@
 <?php
 		}
 ?>	
+</div>
 </body>
 </html>
