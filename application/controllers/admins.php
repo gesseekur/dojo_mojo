@@ -41,7 +41,7 @@ class Admins extends CI_Controller {
 	}
 
 	public function update_status($id) {
-		$status=$this->input->post('status');
+		$status=$this->input->post('status_id');
 		// var_dump($status);
 		// die();
 		$this->Admin->update_status($status, $id);

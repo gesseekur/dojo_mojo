@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<title>Dashboard Orders</title>
-<<<<<<< HEAD
+
     <style type="text/css">
     select, input{
 		display: inline-block;
@@ -11,7 +11,6 @@
 		float: right;
 	}
     </style>
-=======
   <!--   <meta http-equiv="refresh" content="25"> -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link hrel="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
@@ -23,7 +22,7 @@
     <script type="text/javascript">
         $(document).ready(function(){
     </script>
->>>>>>> order_page
+
 </head>
 <body>
 	<?= $this->load->view('partials/nav_bar')?>
@@ -34,11 +33,16 @@
 	<form method="post" action="/admins/search_orders">
 		<select name="search_orders" onchange="this.form.submit()">
 			<option value="shipping">Show All</option>
-			<option value="order in process">Order in Process</option>
-			<option value="shipping">Shipping</option>
-			<option value="cancelled">Cancelled</option>
+<?php 		foreach ($status as $stat){
+?>
+			<option value="order in process"><?= $stat['status_name']?></option>
+			<!-- <option value="shipping">Shipping</option>
+			<option value="cancelled">Cancelled</option> -->
+<?php 		}
+?>	
 		</select>
 	</form>
+
 	<table class = "table table-striped">
 		<thead>
 			<tr>
@@ -64,9 +68,11 @@
 				<td>
 
 		<form method="post" action="/admins/update_status/<?=$order['id']?>">
-				<select name="status" onchange="this.form.submit()">
+				<select name="status_id" onchange="this.form.submit()">
 					<option><?=$order['status_name']?></option>
 <?php
+		// var_dump($order['status_name']);
+
 		foreach ($status as $stat){
 			if ($order['status_name'] == $stat['status_name'] && $order['status_id'] == $stat['id']) {
 			}
@@ -76,21 +82,23 @@
 <?php
 			}
 		}
-?>
+?>	
 				</select>
 <?php
+		
+
 		}
 ?>	
 				</td>
 			</tr>
-	
 		</tbody>
-	</form>
+		</form>	
 	</table>
 
-<?php 
 
-	if (isset($search))
+<?php 
+// var_dump($stat['id']);
+// die();
 ?>
 	</div>
 </body>
