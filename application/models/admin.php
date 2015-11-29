@@ -13,15 +13,17 @@
 		}
 
 		public function view_orders() {
-			$query="SELECT orders.id, users.name, DATE_FORMAT(users.created_at, '%c/%e/%Y') as created_at, orders.status FROM orders
-					LEFT JOIN users ON orders.user_id = users.id ";
+			$query="SELECT orders.id, users.name, orders.status_id, DATE_FORMAT(users.created_at, '%c/%e/%Y') as created_at, status.status_name FROM orders
+					LEFT JOIN users ON orders.user_id = users.id
+					LEFT JOIN status ON orders.status_id=status.id";
 			return $this->db->query($query)->result_array();
 		}
 
 		public function search_orders($search){
-			$query="SELECT orders.id, users.name, DATE_FORMAT(orders.created_at, '%c/%e/%Y') as created_at, orders.status FROM orders
+			$query="SELECT orders.id, users.name, DATE_FORMAT(orders.created_at, '%c/%e/%Y') as created_at, status.status_name FROM orders
 				LEFT JOIN users ON orders.user_id = users.id 
-				WHERE name LIKE ? OR orders.id LIKE ? OR orders.created_at LIKE ? OR orders.status LIKE ?"; 
+				LEFT JOIN status ON orders.status_id = status.id
+				WHERE name LIKE ? OR orders.id LIKE ? OR orders.created_at LIKE ? OR status.status_name LIKE ?"; 
 			$values=array("%" . $search . "%","%" . $search . "%","%" . $search . "%","%" . $search . "%");
 			return $this->db->query($query,$values)->result_array();
 		}
@@ -34,8 +36,16 @@
 		}
 
 		public function select_status() {
-			$query="SELECT status FROM orders";
+			$query="SELECT status_name, id FROM status";
 			return $this->db->query($query)->result_array();
+		}
+
+		public function update_status($status,$id) {
+			// var_dump($status, $id);
+			// die();
+			$query="UPDATE orders SET status_id=?, updated_at= NOW() WHERE id=?";
+			$value=array($status,$id);
+			$this->db->query($query,$value);
 		}
 
 

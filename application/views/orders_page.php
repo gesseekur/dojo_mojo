@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Dashboard Orders</title>
-    <meta http-equiv="refresh" content="25">
+  <!--   <meta http-equiv="refresh" content="25"> -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link hrel="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -17,14 +17,16 @@
 </head>
 <body>
 	<?= $this->load->view('partials/nav_bar')?>
-	<div class = "container">
+	<div class="container">
 	<form method="post" action="/admins/search_orders">
-		<input id="search" type="text" placeholder="Search" name="search">
-		<select name="search_orders">
-			<option>Show All</option>
-			<option>Order in Process</option>
-			<option>Shipping</option>
-			<option>Cancelled</option>
+		<input id="search" type="text" placeholder="Search" name="search_orders">
+	</form>
+	<form method="post" action="/admins/search_orders">
+		<select name="search_orders" onchange="this.form.submit()">
+			<option value="shipping">Show All</option>
+			<option value="order in process">Order in Process</option>
+			<option value="shipping">Shipping</option>
+			<option value="cancelled">Cancelled</option>
 		</select>
 	</form>
 	<table class = "table table-striped">
@@ -40,6 +42,7 @@
 		</thead>
 		<tbody>
 <?php 
+
 		foreach ($orders as $order){
 ?>
 			<tr>
@@ -50,23 +53,21 @@
 				<td><?=$order['id']?></td>
 				<td>
 
-		<form method="post" action="">
-				<select name="status">
-					<option><?=$order['status']?></option>
+		<form method="post" action="/admins/update_status/<?=$order['id']?>">
+				<select name="status" onchange="this.form.submit()">
+					<option><?=$order['status_name']?></option>
 <?php
 		foreach ($status as $stat){
-			if ($order['status'] == $stat['status']) {
+			if ($order['status_name'] == $stat['status_name'] && $order['status_id'] == $stat['id']) {
 			}
 			else {
 ?>
-					<option><?=$stat['status']?></option>
+					<option value="<?=$stat['id']?>"><?=$stat['status_name']?></option>
 <?php
 			}
 		}
 ?>
 				</select>
-			<input type="submit" value="submit">
-		</form>
 <?php
 		}
 ?>	
@@ -74,7 +75,13 @@
 			</tr>
 	
 		</tbody>
+	</form>
 	</table>
+
+<?php 
+
+	if (isset($search))
+?>
 	</div>
 </body>
 </html>
