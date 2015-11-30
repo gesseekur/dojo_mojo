@@ -7,8 +7,8 @@
 			return $this->db->query($query,$values)->row_array();
 		}
 
-		public function view_products(){
-			$query="SELECT categories.category_name, products.image_name, products.id, products.name, products.quantity, products.quantity_sold FROM products LEFT JOIN categories on products.category_id = categories.id LIMIT 5 ";
+		public function view_0_5_products(){
+			$query="SELECT categories.category_name, products.image_name, products.id, products.name, products.quantity, products.quantity_sold FROM products LEFT JOIN categories on products.category_id = categories.id ORDER BY products.id ASC LIMIT 0,5";
 			return $this->db->query($query)->result_array();
 		}
 
@@ -96,7 +96,7 @@
 
 		public function show_orders($order_id)
 		{
-			$query = "SELECT address.name as user, address.street, address.city, address.zip, address.state, products.name as item, products.price, products.quantity, orders.status, orders.id as id
+			$query = "SELECT address.name as user, address.street, address.city, address.zip, address.state, products.name as item, products.price, products.quantity, orders.status_id, orders.id as id
  						FROM orders
  						LEFT JOIN address on orders.user_id = address.user_id
  						LEFT JOIN order_details on orders.id = order_details.order_id

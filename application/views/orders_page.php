@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<title>Dashboard Orders</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
     <style type="text/css">
     select, input{
@@ -30,18 +31,19 @@
 	<form method="post" action="/admins/search_orders">
 		<input id="search" type="text" placeholder="Search" name="search_orders">
 	</form>
-	<form method="post" action="/admins/search_orders">
+<form method="post" action="/admins/search_orders">
 		<select name="search_orders" onchange="this.form.submit()">
-			<option value="shipping">Show All</option>
-<?php 		foreach ($status as $stat){
+			<option value="select">Select an Option</option>
+			<option <?=$this->session->flashdata('selectedStatus')?> value="show">Show All</option>
+<?php 		
+		foreach ($status as $stat){
 ?>
-			<option value="order in process"><?= $stat['status_name']?></option>
-			<!-- <option value="shipping">Shipping</option>
-			<option value="cancelled">Cancelled</option> -->
+			<option <?=$this->session->flashdata('selectedStatus')?> value="<?= $stat['status_name']?>"><?= $stat['status_name']?></option>
 <?php 		}
+
 ?>	
 		</select>
-	</form>
+</form>
 
 	<table class = "table table-striped">
 		<thead>
@@ -69,37 +71,32 @@
 
 		<form method="post" action="/admins/update_status/<?=$order['id']?>">
 				<select name="status_id" onchange="this.form.submit()">
-					<option><?=$order['status_name']?></option>
+					<option value="<?=$order['status_id']?>"><?=$order['status_name']?></option>
 <?php
-		// var_dump($order['status_name']);
-
 		foreach ($status as $stat){
 			if ($order['status_name'] == $stat['status_name'] && $order['status_id'] == $stat['id']) {
 			}
-			else {
+			else {	
 ?>
 					<option value="<?=$stat['id']?>"><?=$stat['status_name']?></option>
 <?php
+				
 			}
 		}
-?>	
-				</select>
+?>
 <?php
-		
-
 		}
 ?>	
+					
+				</select>
 				</td>
 			</tr>
-		</tbody>
 		</form>	
+		</tbody>
+	
 	</table>
 
 
-<?php 
-// var_dump($stat['id']);
-// die();
-?>
 	</div>
 </body>
 </html>

@@ -33,17 +33,30 @@ class Admins extends CI_Controller {
 	}
 
 	public function search_orders() {
-		$orders = $this->input->post('search_orders');
-		$output['orders']=$this->Admin->search_orders($orders);
-		// var_dump($output);
-		// die();
-		$this->load->view('orders_page', $output);
+		 if ( $this->input->post('search_orders') ){ 
+   	    		$this->session->set_flashdata('selectedStatus','selected');
+   	   		}
+			if (($this->input->post('search_orders')) == "show") {
+			redirect('/dashboard/orders');
+			}
+	
+			else {
+				$output['status'] = $this->Admin->select_status();
+				$orders = $this->input->post('search_orders');
+				$output['orders']=$this->Admin->search_orders($orders);
+				$this->load->view('orders_page', $output);
+			}
+			
+
+		// else {
+		// 	$selected="";
+		// }
 	}
 
 	public function update_status($id) {
 		$status=$this->input->post('status_id');
-		// var_dump($status);
-		// die();
+		var_dump($status);
+		die();
 		$this->Admin->update_status($status, $id);
 		redirect ('/dashboard/orders');
 	}
