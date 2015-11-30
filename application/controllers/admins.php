@@ -63,7 +63,8 @@ class Admins extends CI_Controller {
 
 	public function search_products() {
 		$search = $this->input->post('search_products');
-		$result=$this->Admin->search_products($search);
+		$output['products']=$this->Admin->search_products($search);
+		$this->load->view('products_page',$output);
 		// var_dump($result);
 		// die();
 	}
@@ -74,12 +75,7 @@ class Admins extends CI_Controller {
 		$this->Admin->edit_category($status);
 	}
 
-	public function view_products(){
-		$products = $this->Admin->view_products();
-		$output['products'] = $products;
-		$this->load->view('products_page',$output);
-	}
-
+	
 	public function delete_product($id) {
 		$delete= $this->Admin->delete_product($id);
 		redirect('/dashboard/products');

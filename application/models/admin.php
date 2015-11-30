@@ -12,10 +12,36 @@
 			return $this->db->query($query)->result_array();
 		}
 
+		public function view_5_10_products(){
+			$query="SELECT categories.category_name, products.image_name, products.id, products.name, products.quantity, products.quantity_sold FROM products LEFT JOIN categories on products.category_id = categories.id ORDER BY products.id ASC LIMIT 5,5";
+			return $this->db->query($query)->result_array();
+		}
+
+		public function view_10_15_products(){
+			$query="SELECT categories.category_name, products.image_name, products.id, products.name, products.quantity, products.quantity_sold FROM products LEFT JOIN categories on products.category_id = categories.id ORDER BY products.id ASC LIMIT 10,5";
+			return $this->db->query($query)->result_array();
+		}
+
+		public function view_15_20_products(){
+			$query="SELECT categories.category_name, products.image_name, products.id, products.name, products.quantity, products.quantity_sold FROM products LEFT JOIN categories on products.category_id = categories.id ORDER BY products.id ASC LIMIT 15,5";
+			return $this->db->query($query)->result_array();
+		}
+
+		public function view_20_25_products(){
+			$query="SELECT categories.category_name, products.image_name, products.id, products.name, products.quantity, products.quantity_sold FROM products LEFT JOIN categories on products.category_id = categories.id ORDER BY products.id ASC LIMIT 20,5";
+			return $this->db->query($query)->result_array();
+		}
+
+		public function view_25_30_products(){
+			$query="SELECT categories.category_name, products.image_name, products.id, products.name, products.quantity, products.quantity_sold FROM products LEFT JOIN categories on products.category_id = categories.id ORDER BY products.id ASC LIMIT 25,5";
+			return $this->db->query($query)->result_array();
+		}
+
+
 		public function view_orders() {
 			$query="SELECT orders.id, users.name, orders.status_id, DATE_FORMAT(users.created_at, '%c/%e/%Y') as created_at, status.status_name FROM orders
 					LEFT JOIN users ON orders.user_id = users.id
-					LEFT JOIN status ON orders.status_id=status.id";
+					LEFT JOIN status ON orders.status_id=status.id ORDER BY orders.id LIMIT 5";
 			return $this->db->query($query)->result_array();
 		}
 
@@ -29,9 +55,10 @@
 		}
 
 		public function search_products($search){
-			$query="SELECT id, name, quantity, quantity_sold FROM products
-					WHERE id LIKE ? OR name LIKE ? OR quantity LIKE ? OR quantity_sold LIKE ?"; 
-			$values=array("%" . $search . "%","%" . $search . "%","%" . $search . "%","%" . $search . "%");
+			$query="SELECT products.id, name, quantity, categories.category_name,image_name, quantity_sold FROM products
+				LEFT JOIN categories on products.category_id = categories.id 
+					WHERE products.id LIKE ? OR products.name LIKE ? OR categories.category_name LIKE ? OR products.quantity LIKE ? OR products.quantity_sold LIKE ?"; 
+			$values=array("%" . $search . "%","%" . $search . "%","%" . $search . "%","%" . $search . "%","%" . $search . "%");
 			return $this->db->query($query,$values)->result_array();
 		}
 

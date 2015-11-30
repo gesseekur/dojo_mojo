@@ -17,8 +17,8 @@
 <body>
 	<?= $this->load->view('partials/nav_bar')?>
 	<div class = "container">
-	<form method="post" action="/admins/search_orders">
-		<input id="search" type="text" placeholder="Search" name="search">
+	<form method="post" action="/admins/search_products">
+		<input id="search" type="text" placeholder="Search" name="search_products">
 	</form>
 	<form method="post" action="/admins/add_product">
 		<input id="add" type="submit" name="submit" value="Add a new product">
@@ -54,12 +54,12 @@
 ?> 
 		</tbody>
 	</table>
-	<a href="">1</a>
-	<a href="">2</a>
-	<a href="">3</a>
-	<a href="">4</a>
-	<a href="">5</a>
-	<a href="">6</a>
+	<a href="/products/view_0_5_products">1</a>
+	<a href="/products/view_5_10_products">2</a>
+	<a href="/products/view_10_15_products">3</a>
+	<a href="/products/view_15_20_products">4</a>
+	<a href="/products/view_20_25_products">5</a>
+	<a href="/products/view_25_30_products">6</a>
 </div>	
 </body>
 </html>
