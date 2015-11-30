@@ -39,7 +39,7 @@
 
 
 		public function view_orders() {
-			$query="SELECT orders.id, users.name, orders.status_id, DATE_FORMAT(users.created_at, '%c/%e/%Y') as created_at, status.status_name, SUM(products.price) as total_price, order_details.id, order_details.product_id, order_details.order_id FROM order_details
+			$query="SELECT orders.id as order_id, users.name, orders.status_id, DATE_FORMAT(users.created_at, '%c/%e/%Y') as created_at, status.status_name, SUM(products.price) as total_price, order_details.id,  order_details.product_id, order_details.order_id FROM order_details
 					LEFT JOIN orders ON order_details.order_id = orders.id
 					LEFT JOIN products ON products.id = order_details.product_id
 					LEFT JOIN users ON orders.user_id = users.id
@@ -133,7 +133,7 @@
  						LEFT JOIN status on orders.status_id = status.id
  						WHERE orders.id = ? ";
  			$values = array($order_id);
- 			return $this->db->query($query, $values) -> row_array();
+ 			return $this->db->query($query, $values) -> result_array();
 		}
 
 		public function show_orders_user($orderid)

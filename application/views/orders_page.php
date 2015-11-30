@@ -51,7 +51,7 @@
 				<th>Order ID</th>
 				<th>Name</th>
 				<th>Date</th>
-				<th>Billing Address</th>
+				<!-- <th>Billing Address</th> -->
 				<th>Total</th>
 				<th>Status</th>
 			</tr>
@@ -62,10 +62,10 @@
 		foreach ($orders as $order){
 ?>
 			<tr>
-				<td><a href="/orders/show/<?=$order['id']?>"><?= $order['id']?></a></td>
+				<td><a href="/orders/show/<?=$order['order_id']?>"><?= $order['order_id']?></a></td>
 				<td><?=$order['name']?></td>
 				<td><?=$order['created_at']?></td>
-				<td><?=$order['id']?></td>
+				<!-- <td><?=$order['id']?></td> -->
 				<td><?=$order['total_price']?></td>
 				<td>
 
