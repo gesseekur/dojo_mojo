@@ -61,10 +61,7 @@
 
 			</table>
 			<div id="stripe">
-
 				<?= $this->session->flashdata("errors") ?>
-				<h2>Let's integrate the stripe API to our CodeIgniter Application</h2>
-
 				<form action="/orders/stripe_pay" method="post">
 					<script
 					src="https://checkout.stripe.com/checkout.js" class="stripe-button"

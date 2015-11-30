@@ -81,6 +81,23 @@ class Orders extends CI_Controller {
 			$this->session->set_flashdata("errors", "Invalid Card. Please try again with another credit card");
 			redirect("carts");
 		}
-		redirect("carts");
+		redirect("orders/add_order");
+	}
+
+	public function add_orders (){
+		$user_id = $this->session->userdata('user')['user_id'];
+
+		$order_id = $this->Order->create_order($user_id);
+
+
+		$items = $this->cart->contents();
+		$data = array();
+
+
+		foreach ($items as $item){
+
+
+		}
+
 	}
 }

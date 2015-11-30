@@ -2,4 +2,9 @@
 
 	class Order extends CI_Model
 	{
+		public function create_order(){
+			$query = "INSERT INTO orders () 
+			VALUES"
+
+		}
 	}
