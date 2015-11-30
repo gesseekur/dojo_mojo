@@ -39,11 +39,14 @@
 
 
 		public function view_orders() {
-			$query="SELECT orders.id, users.name, orders.status_id, DATE_FORMAT(users.created_at, '%c/%e/%Y') as created_at, status.status_name FROM orders
+			$query="SELECT orders.id, users.name, orders.status_id, DATE_FORMAT(users.created_at, '%c/%e/%Y') as created_at, status.status_name, SUM(products.price) as total_price, order_details.id, order_details.product_id, order_details.order_id FROM order_details
+					LEFT JOIN orders ON order_details.order_id = orders.id
+					LEFT JOIN products ON products.id = order_details.product_id
 					LEFT JOIN users ON orders.user_id = users.id
-					LEFT JOIN status ON orders.status_id=status.id ORDER BY orders.id LIMIT 5";
+					LEFT JOIN status ON orders.status_id=status.id GROUP BY order_details.order_id ORDER BY orders.id LIMIT 5";
 			return $this->db->query($query)->result_array();
 		}
+
 
 		public function search_orders($search){
 			$query="SELECT orders.id, users.name, DATE_FORMAT(orders.created_at, '%c/%e/%Y') as created_at, status.status_name FROM orders

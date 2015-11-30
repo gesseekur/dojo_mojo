@@ -66,7 +66,7 @@
 				<td><?=$order['name']?></td>
 				<td><?=$order['created_at']?></td>
 				<td><?=$order['id']?></td>
-				<td><?=$order['id']?></td>
+				<td><?=$order['total_price']?></td>
 				<td>
 
 		<form method="post" action="/admins/update_status/<?=$order['id']?>">
