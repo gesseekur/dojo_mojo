@@ -40,7 +40,7 @@
 
 
 // $route['default_controller'] = 'users';
-$route['default_controller'] = 'admins/index';
+$route['default_controller'] = 'users';
 
 // $route['default_controller'] = 'admins/index';
 

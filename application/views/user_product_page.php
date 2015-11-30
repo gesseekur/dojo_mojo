@@ -53,13 +53,6 @@
                             <input name="qty" type="number">
                             <input name="id" type="hidden" value="<?=$product['id']?>">
                                 <input type = "submit" value = "Add to Cart">
-                            <select name = "quantity">
-                                <option value = "1">1</option>
-                                <option value = "2">2</option>
-                                <option value = "3">3</option>
-                                <option value = "4">4</option>
-                                <option value = "5">5</option>
-                            </select>
                                 <input type = "submit" value = "Buy">
                             </form>
                         <?php
