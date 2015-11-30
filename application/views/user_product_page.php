@@ -21,10 +21,10 @@
         <div class="page-header">
             <h2>dojo_Mojo</h2>
             <a id = "store_link" href="/users/homepage">Back to dojo_Mojo Store</a>
-            <button type="button" class="shopping_cart btn-lg" href ="/carts" aria-label="Shopping Cart">
+            <a href="/carts"><button type="button" class="shopping_cart btn-lg" aria-label="Shopping Cart">
                 <span class="glyphicon glyphicon-shopping-cart btn-md" aria-hidden="true"></span>
                 <span class= "badge"><?= $total_items ?></span>
-            </button>
+            </button></a>
             <form id = "logout" action = "/users/logout" method = "POST">
                 <input type = "submit" value = "Logout">
             </form>

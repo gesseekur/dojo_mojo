@@ -20,10 +20,10 @@
   </head>
   <body>
     <div class="container">
-       <button type="button" class="shopping_cart btn-lg" href ="/carts" aria-label="Shopping Cart">
+            <a href="/carts"><button type="button" class="shopping_cart btn-lg" aria-label="Shopping Cart">
                 <span class="glyphicon glyphicon-shopping-cart btn-md" aria-hidden="true"></span>
                 <span class= "badge"><?= $total_items ?></span>
-            </button>
+            </button></a>
       <form class="navbar-form navbar-left" role="search" method="post" action="/users/search_products">
   <div class="form-group">
     <input type="text" class="form-control" placeholder="Search" name="search_products">
@@ -37,9 +37,9 @@
             <div class="col-md-3">
                 <p class="lead">Categories</p>
                 <div class="list-group">
-                    <a href="/users/search_cats/potions" class="list-group-item">Potions</a>
-                    <a href="/users/search_cats/armor" class="list-group-item">Armor</a>
                     <a href="/users/search_cats/weapons" class="list-group-item">Weapons</a>
+                    <a href="/users/search_cats/armor" class="list-group-item">Armor</a>
+                    <a href="/users/search_cats/potions" class="list-group-item">Potions</a>
                 </div>
             </div>
             <div class="col-md-9">

@@ -18,7 +18,7 @@
 		<div class = "container">    
 			<div class="page-header">
 				<h2>dojo_Mojo</h2>
-				<button type="button" class="shopping_cart btn-lg" href = " " aria-label="Shopping Cart">
+				<button type="button" class="shopping_cart btn-lg" href = "" aria-label="Shopping Cart">
 					<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
 					<span class= "badge"><?= $total_items ?></span>
 				</button>
@@ -47,21 +47,22 @@
 						?>
 						<tr>
 							<td><?=$product['name']?></td>
-							<td><?=$product['price']?></td>
+							<td>$ <?=$product['price']?></td>
 							<td><?=$product['qty']?><a href="/products/show/<?=$product['id']?>"> edit</a>
 								<a href="/orders/remove_from_cart/<?=$product['rowid']?>"> delete</a>
 							</td>	
-							<td><?=$product['subtotal']?></td>
+							<td>$ <?=$product['subtotal']?></td>
 						</tr>
 						<?php
 					}
 					?> 
-					<td><?=$total?> Grand Total</td>
+					<td>$ <?=$total?> Grand Total</td>
 				</tbody>
 
 			</table>
 			<div id="stripe">
-				<?= $this->session->flashdata("errors") ?>
+				<h2><?= $this->session->flashdata("errors") ?>
+				<?= $this->session->flashdata("success") ?></h2>
 				<form action="/orders/stripe_pay" method="post">
 					<script
 					src="https://checkout.stripe.com/checkout.js" class="stripe-button"
