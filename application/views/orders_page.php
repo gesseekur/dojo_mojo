@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 	<title>Dashboard Orders</title>
-<<<<<<< HEAD
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
     <style type="text/css">
     select, input{
 		display: inline-block;
@@ -11,7 +12,6 @@
 		float: right;
 	}
     </style>
-=======
   <!--   <meta http-equiv="refresh" content="25"> -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link hrel="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
@@ -23,7 +23,7 @@
     <script type="text/javascript">
         $(document).ready(function(){
     </script>
->>>>>>> order_page
+
 </head>
 <body>
 	<?= $this->load->view('partials/nav_bar')?>
@@ -31,14 +31,20 @@
 	<form method="post" action="/admins/search_orders">
 		<input id="search" type="text" placeholder="Search" name="search_orders">
 	</form>
-	<form method="post" action="/admins/search_orders">
+<form method="post" action="/admins/search_orders">
 		<select name="search_orders" onchange="this.form.submit()">
-			<option value="shipping">Show All</option>
-			<option value="order in process">Order in Process</option>
-			<option value="shipping">Shipping</option>
-			<option value="cancelled">Cancelled</option>
+			<option value="select">Select an Option</option>
+			<option <?=$this->session->flashdata('selectedStatus')?> value="show">Show All</option>
+<?php 		
+		foreach ($status as $stat){
+?>
+			<option <?=$this->session->flashdata('selectedStatus')?> value="<?= $stat['status_name']?>"><?= $stat['status_name']?></option>
+<?php 		}
+
+?>	
 		</select>
-	</form>
+</form>
+
 	<table class = "table table-striped">
 		<thead>
 			<tr>
@@ -60,38 +66,37 @@
 				<td><?=$order['name']?></td>
 				<td><?=$order['created_at']?></td>
 				<td><?=$order['id']?></td>
-				<td><?=$order['id']?></td>
+				<td><?=$order['total_price']?></td>
 				<td>
 
 		<form method="post" action="/admins/update_status/<?=$order['id']?>">
-				<select name="status" onchange="this.form.submit()">
-					<option><?=$order['status_name']?></option>
+				<select name="status_id" onchange="this.form.submit()">
+					<option value="<?=$order['status_id']?>"><?=$order['status_name']?></option>
 <?php
 		foreach ($status as $stat){
 			if ($order['status_name'] == $stat['status_name'] && $order['status_id'] == $stat['id']) {
 			}
-			else {
+			else {	
 ?>
 					<option value="<?=$stat['id']?>"><?=$stat['status_name']?></option>
 <?php
+				
 			}
 		}
 ?>
-				</select>
 <?php
 		}
 ?>	
+					
+				</select>
 				</td>
 			</tr>
-	
+		</form>	
 		</tbody>
-	</form>
+	
 	</table>
 
-<?php 
 
-	if (isset($search))
-?>
 	</div>
 </body>
 </html>

@@ -1,6 +1,11 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Admins extends CI_Controller {
+class Admins extends CI_Controller {	
+	function __construct()    {
+        parent::__construct();
+        $this->load->helper('form');
+        $this->load->helper('url');
+    }  
 
 
 	public function index() {
@@ -33,24 +38,38 @@ class Admins extends CI_Controller {
 	}
 
 	public function search_orders() {
-		$orders = $this->input->post('search_orders');
-		$output['orders']=$this->Admin->search_orders($orders);
-		// var_dump($output);
-		// die();
-		$this->load->view('orders_page', $output);
+		 if ( $this->input->post('search_orders') ){ 
+   	    		$this->session->set_flashdata('selectedStatus','selected');
+   	   		}
+			if (($this->input->post('search_orders')) == "show") {
+			redirect('/dashboard/orders');
+			}
+	
+			else {
+				$output['status'] = $this->Admin->select_status();
+				$orders = $this->input->post('search_orders');
+				$output['orders']=$this->Admin->search_orders($orders);
+				$this->load->view('orders_page', $output);
+			}
+			
+
+		// else {
+		// 	$selected="";
+		// }
 	}
 
 	public function update_status($id) {
-		$status=$this->input->post('status');
-		// var_dump($status);
-		// die();
+		$status=$this->input->post('status_id');
+		var_dump($status);
+		die();
 		$this->Admin->update_status($status, $id);
 		redirect ('/dashboard/orders');
 	}
 
 	public function search_products() {
 		$search = $this->input->post('search_products');
-		$result=$this->Admin->search_products($search);
+		$output['products']=$this->Admin->search_products($search);
+		$this->load->view('products_page',$output);
 		// var_dump($result);
 		// die();
 	}
@@ -61,23 +80,22 @@ class Admins extends CI_Controller {
 		$this->Admin->edit_category($status);
 	}
 
-	public function view_products(){
-		$products = $this->Admin->view_products();
-		$output['products'] = $products;
-		$this->load->view('products_page',$output);
-	}
-
+	
 	public function delete_product($id) {
 		$delete= $this->Admin->delete_product($id);
 		redirect('/dashboard/products');
 	}
 
 	public function add_product() {
+		$this->load->helper('form');
+		$this->load->library('upload');
 		$output['category'] = $this->Admin->get_all_categories();
 		$this->load->view('add_product', $output);
 	}
 
 	public function add_product_to_db(){
+		$this->load->helper('form');
+		$this->load->library('upload');
 		$new_category=$this->input->post('new_category');
 
 		if (strlen($new_category)) {
@@ -106,6 +124,33 @@ class Admins extends CI_Controller {
 		$this->load->view('edit_product', $output);
 	}
 
+	public function upload_image() {
+       $config['upload_path']   =   "uploads/";
+       $config['allowed_types'] =   "gif|jpg|jpeg|png"; 
+       $config['max_size']      =   "5000";
+       $config['max_width']     =   "1907";
+       $config['max_height']    =   "1280";
+       $this->load->library('upload',$config);
+ 
+       if(!$this->upload->do_upload())       {
+ 	      echo $this->upload->display_errors();
+ 		}
+       else  {
+           $finfo=$this->upload->data();
+           $data['uploadInfo'] = $finfo;
+           // $data['thumbnail_name'] = $finfo['raw_name']. '_thumb' .$finfo['file_ext']; 
+           $this->load->view('upload_success',$data);
+		}
+		$this->load->library('upload', $config);
+		if(!$this->upload->do_upload()) {
+			$this->session->set_flashdata('error', 'You had an error. Please try again');
+		}
+		if(is_file($config['upload_path'])) {
+    	chmod($config['upload_path'], 777); 
+		}
+	}
+
+
 	public function update_product_to_db($id){
 		$new_category= $this->input->post('new_category');
 		if (strlen($new_category)) {
@@ -130,9 +175,18 @@ class Admins extends CI_Controller {
 	public function show_order_id($id)
 	{
 		$output["infos"] = $this->Admin->show_orders($id);
+		$output["users"] = $this->Admin->show_orders_user($id);	
 		$this->load->view('show_order.php', $output);
 	}
 
+	// displays info for one single product
+	public function view_single_product($product_id){
+		$this->load->library('cart');
+		$output['total_items'] = $this->cart->total_items();
+		$products = $this->Admin->view_product($product_id);
+		$output['products'] = $products;
+		$this->load->view('user_product_page',$output);
+	}
 	
 	public function log_off(){
 		$this->session->unset_userdata('');

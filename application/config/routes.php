@@ -39,15 +39,23 @@
 */
 
 $route['default_controller'] = 'users';
+<<<<<<< HEAD
 // $route['default_controller'] = 'temp';
+=======
+>>>>>>> 0b8ebbfef42fbc9d3e56c5713647371e627a88c3
 $route['admin'] = 'admins/index';
 $route['homepage'] = 'users/login';
+$route['carts'] = 'orders/index';
 $route['dashboard/orders']='/admins/view_orders';
-$route['dashboard/products']='admins/view_products';
+$route['dashboard/products']='/products/view_0_5_products';
+// $route['orders/show/(:any)']='/admins/show_order_id/$1';
+// $route['dashboard/products']='admins/view_products';
 $route['orders/show/(:any)']='admins/show_order_id/$1';
+$route['products/show/(:any)']='users/view_single_product/$1';
 $route['products/edit_product/(:any)']='admins/edit_product/$1';
 $route['register'] = 'users/register';
 $route['login'] = 'users/login';
+// $route['dashboard/orders'] = '/admins/search_orders';
 
 
 

@@ -8,17 +8,17 @@
 	<?= $this->load->view('partials/nav_bar')?>
 	<div class = "container">
 <?php 
-		foreach ($infos as $info)
+		foreach ($users as $user)
 		{
 ?>
 	<div id="info">
-		<p>Order ID: <?= $info['id']?></p>
-		<h4>Customer Billing info: </h4>
-		Name: <?= $info['user']?><br>
-		Address: <?= $info['street']?><br>
-		City: <?= $info['city']?><br>
-		State: <?= $info['state']?><br>
-		Zipcode: <?= $info['zip']?><br>
+		<p>Order ID: <?= $user['order_id']?></p>
+		<!-- <h4>Customer Billing info: </h4>
+		Name: <?= $user['user']?><br>
+		Address: <?= $user['street']?><br>
+		City: <?= $user['city']?><br>
+		State: <?= $user['state']?><br>
+		Zipcode: <?= $user['zip']?><br> -->
 	</div>
 
 		<table "table table-striped">
@@ -31,9 +31,14 @@
 				<th>Total</th>
 			</tr>
 		</thead>
+<?php 
+		}
+		foreach ($infos as $info)
+		{
+?>
 		<tbody>
 			<tr>
-				<td><?= $info['id']?></td>
+				<td><?= $info['product_id']?></td>
 				<td><?= $info['item']?></td>
 				<td><?= $info['price']?></td>
 				<td><?= $info['quantity']?></td>
@@ -43,7 +48,7 @@
 	</table>
 
 	<div id="status">
-		<h4>Status: <?= $info['status']?></h4>
+		<h4>Status: <?= $info['status_name']?></h4>
 	</div>
 
 	<div id="total">

@@ -25,13 +25,24 @@
 		<p>or add new category:<input type="text" name="new_category"></p>
 		<p>Quantity <input type="text" value="<?= $product['quantity']?>" name="quantity"></p>
 		<p>Quantity sold:<input type="text" value="<?= $product['quantity_sold']?>" name="quantity_sold"></p>
-		<p>Images <input type="file"  value="<?= $product['image_name']?>"name="image_name" ></p>
+		<a href="/dashboard/products"> Cancel </a>
 		<img height="40" width="40" src="/assets/<?=$product['category_name']?>_icons/solid/<?=$product['image_name']?>.png">
 		<br><br>
-		<a href="/dashboard/products"> Cancel </a>
-		<input type="submit" value="Preview" name="preview">
 		<input type="submit" value="Update" name="update">
 	</form>
+<?php
+		echo form_open_multipart('admins/upload_image');
+?>
+		<p>Images</p>
+		<p> <input name="userfile" id="userfile" type="file"  value="<?= $product['image_name']?>"  ></p>
+		<!-- <p> Solid:<input type="file"  value="<?= $product['image_name']?>" name="image_name" ></p>
+		<p> Transparent:<input type="file"  value="<?= $product['image_name']?>" name="image_name" ></p> -->
+		<input type="hidden" value="<?=$id?>" name="product_id">
+		<p> <input type="submit" value="Preview" name="preview"></p>
+		
+<?php echo form_close();
+?>
+	
 </body>
 </html>
 
