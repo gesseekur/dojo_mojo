@@ -12,7 +12,7 @@ class Orders extends CI_Controller {
 	public function index(){
 
 
-
+		// loading data from the cart to have in view
 		$output['products'] = $this->cart->contents();
 		$output['total'] = $this->cart->total();
 		$output['total_items'] = $this->cart->total_items();
@@ -22,8 +22,8 @@ class Orders extends CI_Controller {
 
 	public function add_to_cart()
 	{
-		// $id = $this->input->post('id');
-		$id = 3;
+		$id = $this->input->post('id');
+		// $id = 3;
 		$qty = $this->input->post('qty');
 
 		$insert_data = $this->Product->product_data_for_cart($id);
