@@ -10,13 +10,20 @@ class Orders extends CI_Controller {
 	}
 
 	public function index(){
+
+
+		// loading data from the cart to have in view
 		$output['products'] = $this->cart->contents();
+		$output['total'] = $this->cart->total();
+		$output['total_items'] = $this->cart->total_items();
+
 		$this->load->view('shopping_cart', $output);
 	}
 
-	function add_to_cart()
+	public function add_to_cart()
 	{
 		$id = $this->input->post('id');
+		// $id = 3;
 		$qty = $this->input->post('qty');
 
 		$insert_data = $this->Product->product_data_for_cart($id);
@@ -24,7 +31,27 @@ class Orders extends CI_Controller {
 
 		$this->cart->insert($insert_data);
 
-		// This will show insert data in cart.
-		redirect('orders');
+
+
+		redirect('carts');
+	}
+
+	function remove_from_cart($rowid) {
+	// Check rowid value.
+		if ($rowid==="all"){
+		// Destroy data which store in session.
+			$this->cart->destroy();
+		}else{
+		// Destroy selected rowid in session.
+			$data = array(
+				'rowid' => $rowid,
+				'qty' => 0
+				);
+			// Update cart data, after cancel.
+			$this->cart->update($data);
+		}
+
+		// This will show cancel data in cart.
+		redirect('carts');
 	}
 }

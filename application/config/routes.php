@@ -44,6 +44,7 @@ $route['default_controller'] = 'admins/index';
 
 $route['admin'] = 'admins/index';
 $route['homepage'] = 'users/login';
+$route['carts'] = 'orders/index';
 $route['dashboard/orders']='/admins/view_orders';
 $route['dashboard/products']='/products/view_0_5_products';
 $route['orders/show/(:any)']='/admins/show_order_id/$1';
