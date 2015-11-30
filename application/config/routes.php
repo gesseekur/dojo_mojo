@@ -39,7 +39,6 @@
 */
 
 // $route['default_controller'] = 'users';
-
 $route['default_controller'] = 'admins/index';
 
 $route['admin'] = 'admins/index';
@@ -47,6 +46,7 @@ $route['homepage'] = 'users/login';
 $route['dashboard/orders']='/admins/view_orders';
 $route['dashboard/products']='admins/view_products';
 $route['orders/show/(:any)']='admins/show_order_id/$1';
+$route['products/show/(:any)']='users/view_single_product/$1';
 $route['products/edit_product/(:any)']='admins/edit_product/$1';
 $route['register'] = 'users/register';
 $route['login'] = 'users/login';

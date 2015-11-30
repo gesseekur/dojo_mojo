@@ -28,7 +28,7 @@ class Users extends CI_Controller {
 			);
 		$this->session->set_userdata($user);
 		// put the right view after this
-		$this->load->view("homepage.php");
+		redirect("/users/homepage");
 		}
 		else
 		{
@@ -63,7 +63,35 @@ class Users extends CI_Controller {
 
 	public function homepage()
 	{
-	// load the home page here 
+		$this->load->model('User');
+		$products = $this->User->view_products();
+		$output['products'] = $products;
+		$this->load->view('homepage.php',$output);
+	}	
+
+	// displays info for one single product
+	public function view_single_product($product_id){
+		$this->load->model('User');
+		$this->load->library('cart');
+		$output['total_items'] = $this->cart->total_items();
+		$products = $this->User->view_product($product_id);
+		$output['products'] = $products;
+		$this->load->view('user_product_page',$output);
+	}
+
+	public function search_products() 
+	{
+		$this->load->model('User');
+		$products = $this->input->post('search_products');
+		$output['products']=$this->User->search_products($products);
+		$this->load->view('homepage.php', $output);
+	}
+
+	public function search_cats($category)
+	{
+		$this->load->model('User');
+		$output['products']=$this->User->search_products($category);
+		$this->load->view('homepage.php', $output);
 	}
 
 	public function logout()

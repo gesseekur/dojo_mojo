@@ -130,9 +130,18 @@ class Admins extends CI_Controller {
 	public function show_order_id($id)
 	{
 		$output["infos"] = $this->Admin->show_orders($id);
+		$output["users"] = $this->Admin->show_orders_user($id);	
 		$this->load->view('show_order.php', $output);
 	}
 
+	// displays info for one single product
+	public function view_single_product($product_id){
+		$this->load->library('cart');
+		$output['total_items'] = $this->cart->total_items();
+		$products = $this->Admin->view_product($product_id);
+		$output['products'] = $products;
+		$this->load->view('user_product_page',$output);
+	}
 	
 	public function log_off(){
 		$this->session->unset_userdata('');
