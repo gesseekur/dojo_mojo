@@ -38,15 +38,7 @@
 |
 */
 
-<<<<<<< HEAD
-// $route['default_controller'] = 'users';
-=======
-
-// $route['default_controller'] = 'users';
 $route['default_controller'] = 'users';
->>>>>>> f88e43f87b6296b7fb84ffe395d4dec353199911
-
-
 $route['admin'] = 'admins/index';
 $route['homepage'] = 'users/login';
 $route['carts'] = 'orders/index';
