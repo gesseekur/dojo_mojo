@@ -8,4 +8,11 @@ class Order extends CI_Model
 		$this->db->query($query, $values);
 		return $this->db->insert_id();
 	}
+
+	public function add_details($product_id, $order_id, $qty){
+		$query = "INSERT INTO games.order_details (product_id, order_id, qty)
+		VALUES (?, ?, ?)";
+		$values = array($product_id, $order_id, $qty);
+		return $this->db->query($query,$values);
+	}
 }

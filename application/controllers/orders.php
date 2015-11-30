@@ -81,11 +81,12 @@ class Orders extends CI_Controller {
 			$this->session->set_flashdata("errors", "Invalid Card. Please try again with another credit card");
 			redirect("carts");
 		}
+		// redirect('carts');
 		redirect("orders/add_order");
 	}
 
-	public function add_orders (){
-		$user_id = $this->session->userdata('user')['user_id'];
+	public function add_order (){
+		$user_id = $this->session->userdata('user_id');
 
 		// create order to add items to
 		$order_id = $this->Order->create_order($user_id);
@@ -95,9 +96,18 @@ class Orders extends CI_Controller {
 
 		// add items to order details
 		foreach ($items as $item){
-
-
+			$product_id = $item['id'];
+			$qty = $item['qty'];
+			$this->Order->add_details($product_id, $order_id, $qty);
 		}
+
+		$this->cart->destroy();
+		$this->session->set_flashdata("success", "Your order was processed successfully. Thank you for your business!");
+
+		redirect('carts');
+
+
+
 
 	}
 }
