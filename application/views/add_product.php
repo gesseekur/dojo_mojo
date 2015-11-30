@@ -23,15 +23,18 @@
 		</p>
 		<p>or add new category:<input type="text" name="new_category"></p>
 		<p>Quantity <input type="text" name="quantity"></p>
-<?php
-	$this->upload->display_errors('<p>', '</p>');
-
-		echo form_open_multipart('admins/edit_product');
-?>
-		<p>Images <input type="file" name="image_name" ></p>
 		<a href="/dashboard/products">Cancel</a>
 		<input type="submit" value="Preview" name="preview">
 		<input type="submit" value="Add" name="update">
 	</form>
+<?php
+		echo form_open_multipart('admins/upload_image');
+?>
+		<p>Images</p>
+		<p> <input name="userfile" id="userfile" type="file"  ></p>
+		<p> <input type="submit" value="Preview" name="preview"></p>
+		
+<?php echo form_close();
+?>
 </body>
 </html>

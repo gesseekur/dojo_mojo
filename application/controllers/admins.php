@@ -1,6 +1,11 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Admins extends CI_Controller {
+class Admins extends CI_Controller {	
+	function __construct()    {
+        parent::__construct();
+        $this->load->helper('form');
+        $this->load->helper('url');
+    }  
 
 
 	public function index() {
@@ -113,25 +118,29 @@ class Admins extends CI_Controller {
 
 
 	public function edit_product($id){
-		$this->load->helper('form');
-		$this->load->library('upload');
 		$output['category']= $this->Admin->get_all_categories();
 		$output['id'] = $id;
 		$output['product'] = $this->Admin->select_product($id);
 		$this->load->view('edit_product', $output);
 	}
 
-	public function do_upload() {
-		$this->load->helper('form');
-		$this->upload->initialize($config);
-		$config = array(
-			'upload_path' => "'./uploads/'",
-			'allowed_types' => "gif|jpg|png|jpeg|pdf",
-			'overwrite' => TRUE,
-			'max_size' => "2048000", 
-			'max_height' => "40",
-			'max_width' => "40"
-		);
+	public function upload_image() {
+       $config['upload_path']   =   "uploads/";
+       $config['allowed_types'] =   "gif|jpg|jpeg|png"; 
+       $config['max_size']      =   "5000";
+       $config['max_width']     =   "1907";
+       $config['max_height']    =   "1280";
+       $this->load->library('upload',$config);
+ 
+       if(!$this->upload->do_upload())       {
+ 	      echo $this->upload->display_errors();
+ 		}
+       else  {
+           $finfo=$this->upload->data();
+           $data['uploadInfo'] = $finfo;
+           // $data['thumbnail_name'] = $finfo['raw_name']. '_thumb' .$finfo['file_ext']; 
+           $this->load->view('upload_success',$data);
+		}
 		$this->load->library('upload', $config);
 		if(!$this->upload->do_upload()) {
 			$this->session->set_flashdata('error', 'You had an error. Please try again');
