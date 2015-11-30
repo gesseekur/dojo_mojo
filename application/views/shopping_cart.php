@@ -77,7 +77,7 @@
 					</script>
 				</form>
 			</div>
-			<a id = "store_link" href="/products">Continue Shopping</a>
+			<a id = "store_link" href="/users/homepage">Continue Shopping</a>
 
 		</body>
 		</html>

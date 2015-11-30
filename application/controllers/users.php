@@ -64,6 +64,8 @@ class Users extends CI_Controller {
 	public function homepage()
 	{
 		$this->load->model('User');
+		$this->load->library('cart');
+		$output['total_items'] = $this->cart->total_items();
 		$products = $this->User->view_products();
 		$output['products'] = $products;
 		$this->load->view('homepage.php',$output);
@@ -82,6 +84,7 @@ class Users extends CI_Controller {
 	public function search_products() 
 	{
 		$this->load->model('User');
+		$this->load->library('cart');
 		$products = $this->input->post('search_products');
 		$output['products']=$this->User->search_products($products);
 		$this->load->view('homepage.php', $output);
@@ -90,6 +93,7 @@ class Users extends CI_Controller {
 	public function search_cats($category)
 	{
 		$this->load->model('User');
+		$this->load->library('cart');
 		$output['products']=$this->User->search_products($category);
 		$this->load->view('homepage.php', $output);
 	}

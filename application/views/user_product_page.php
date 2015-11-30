@@ -21,7 +21,7 @@
         <div class="page-header">
             <h2>dojo_Mojo</h2>
             <a id = "store_link" href="/users/homepage">Back to dojo_Mojo Store</a>
-            <button type="button" class="shopping_cart btn-lg" href = " " aria-label="Shopping Cart">
+            <button type="button" class="shopping_cart btn-lg" href ="/carts" aria-label="Shopping Cart">
                 <span class="glyphicon glyphicon-shopping-cart btn-md" aria-hidden="true"></span>
                 <span class= "badge"><?= $total_items ?></span>
             </button>
@@ -49,11 +49,10 @@
                             <p><?= $product['specifications']?></p>
                             <p><span style = "color: black">Price: $<?= $product['price']?></span></p>
                             <label>Quantity</label>
-                            <form action = "orders/add_to_cart" method = "POST">
+                            <form action = "/orders/add_to_cart" method = "POST">
                             <input name="qty" type="number">
                             <input name="id" type="hidden" value="<?=$product['id']?>">
                                 <input type = "submit" value = "Add to Cart">
-                                <input type = "submit" value = "Buy">
                             </form>
                         <?php
                         }

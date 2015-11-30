@@ -7,6 +7,7 @@
      <link hrel="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
       <link rel="stylesheet" type="text/css" href="hover_in_out.css">
        <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+        <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
        <script type="text/javascript">
             $(document).ready(function() {
                 $('img').hover(function () {
@@ -19,6 +20,10 @@
   </head>
   <body>
     <div class="container">
+       <button type="button" class="shopping_cart btn-lg" href ="/carts" aria-label="Shopping Cart">
+                <span class="glyphicon glyphicon-shopping-cart btn-md" aria-hidden="true"></span>
+                <span class= "badge"><?= $total_items ?></span>
+            </button>
       <form class="navbar-form navbar-left" role="search" method="post" action="/users/search_products">
   <div class="form-group">
     <input type="text" class="form-control" placeholder="Search" name="search_products">
