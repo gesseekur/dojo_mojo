@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <!-- <title><?php echo $product_name ?></title> -->
-        <meta http-equiv="refresh" content="25">
+        <!-- <meta http-equiv="refresh" content="25"> -->
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link hrel="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -20,10 +20,10 @@
         <div class = "container">    
         <div class="page-header">
             <h2>dojo_Mojo</h2>
-            <a id = "store_link" href="">Back to dojo_Mojo Store</a>
+            <a id = "store_link" href="/users/homepage">Back to dojo_Mojo Store</a>
             <button type="button" class="shopping_cart btn-lg" href = " " aria-label="Shopping Cart">
                 <span class="glyphicon glyphicon-shopping-cart btn-md" aria-hidden="true"></span>
-                <span class= "badge">7</span>
+                <span class= "badge"><?= $total_items ?></span>
             </button>
             <form id = "logout" action = "/users/logout" method = "POST">
                 <input type = "submit" value = "Logout">
@@ -32,24 +32,39 @@
             <div id = "product_image">
                 <div class = "row">
                     <div class = "col-md-6 col-md-offset-2">
-                        <h1><?php echo "Product Name" ?></h1>
-                        <img src = "/assets/weapons_icons/large/1.png" alt = "product/id" class="img-thumbnail">
+                        <?php
+                            foreach ($products as $product) 
+                            {
+                        ?> 
+                        <h1><?= $product['name'] ?></h1>
+                        <img src = "/assets/<?= $product['category_name']?>_icons/large/<?= $product['image_name']?>.png" alt = "product/<?= $product['id']?>" class="img-thumbnail">
                     </div>
                     <div class = "col-md-4">
                         <div id = "product_desc">
                             <h3>Product Description</h3>
-                            <p>Ontgonnen perzische in herhaling nu honderden belasting. Bevaarbaar schipbreuk kilometers af al uitgevoerd. In zand alle daad na doet gold waar. Stam twee aan koel zijn aard met geld. Op geslaagd nu trouwens omgeving na omwonden de wakkeren. Oven acre sago in de tijd op wijk.</p>
-                        <div></p>
+                            <p><?= $product['description']?></p>
+                        <div>
                         </div>
                             <h3>Specs:  </h3>
-                            <p>STRENGTH ==</p>
-                            <p><span style = "color: black">Price: $ </span></p>
+                            <p><?= $product['specifications']?></p>
+                            <p><span style = "color: black">Price: $<?= $product['price']?></span></p>
                             <label>Quantity</label>
                             <form action = "orders/add_to_cart" method = "POST">
                             <input name="qty" type="number">
-                            <input name="id" type="hidden" value="<?=$id?>">
+                            <input name="id" type="hidden" value="<?=$product['id']?>">
                                 <input type = "submit" value = "Add to Cart">
+                            <select name = "quantity">
+                                <option value = "1">1</option>
+                                <option value = "2">2</option>
+                                <option value = "3">3</option>
+                                <option value = "4">4</option>
+                                <option value = "5">5</option>
+                            </select>
+                                <input type = "submit" value = "Buy">
                             </form>
+                        <?php
+                        }
+                        ?>
                         </div>
                     </div> 
                 </div> 

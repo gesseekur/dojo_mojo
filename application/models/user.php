@@ -26,4 +26,27 @@ class User extends CI_Model
 		return $this->db->query($query, $value)->result_array();
 	}
 
+	public function view_products()
+	{
+			$query="SELECT categories.category_name, products.image_name, products.id as product_id, products.name FROM products LEFT JOIN categories on products.category_id = categories.id";
+			return $this->db->query($query)->result_array();
+	}
+
+	public function view_product($id)
+	{
+			$query="SELECT categories.category_name, products.image_name, products.id, products.name, products.description, products.specifications, products.price
+					FROM products 
+					LEFT JOIN categories on products.category_id = categories.id
+					WHERE products.id = ? ";
+			$values = array($id);
+			return $this->db->query($query, $values)->result_array();
+	}
+
+	public function search_products($search){
+			$query="SELECT products.id as product_id, name, quantity, quantity_sold, image_name, categories.category_name FROM products
+					LEFT JOIN categories on products.category_id = categories.id
+					WHERE products.id LIKE ? OR name LIKE ? OR categories.category_name LIKE ?"; 
+			$values=array("%" . $search . "%","%" . $search . "%", "%" . $search . "%");
+			return $this->db->query($query,$values)->result_array();
+		}
 }
