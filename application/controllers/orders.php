@@ -87,13 +87,13 @@ class Orders extends CI_Controller {
 	public function add_orders (){
 		$user_id = $this->session->userdata('user')['user_id'];
 
+		// create order to add items to
 		$order_id = $this->Order->create_order($user_id);
-
 
 		$items = $this->cart->contents();
 		$data = array();
 
-
+		// add items to order details
 		foreach ($items as $item){
 
 
