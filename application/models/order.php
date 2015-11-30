@@ -2,3 +2,4 @@
 
 	class Order extends CI_Model
 	{
+	}
