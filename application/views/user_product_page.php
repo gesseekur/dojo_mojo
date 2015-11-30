@@ -45,15 +45,10 @@
                             <p>STRENGTH ==</p>
                             <p><span style = "color: black">Price: $ </span></p>
                             <label>Quantity</label>
-                            <select>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                            <form action = "orders/order/buy" method = "POST">
-                                <input type = "submit" value = "Buy">
+                            <form action = "orders/add_to_cart" method = "POST">
+                            <input name="qty" type="number">
+                            <input name="id" type="hidden" value="<?=$id?>">
+                                <input type = "submit" value = "Add to Cart">
                             </form>
                         </div>
                     </div> 

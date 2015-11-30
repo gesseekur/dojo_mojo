@@ -35,7 +35,6 @@
 	<table class = "table table-striped">
 		<thead>
 			<tr>
-				<th>Item</th>
 				<th>Name</th>
 				<th>Price</th>
 				<th>Quantity</th>

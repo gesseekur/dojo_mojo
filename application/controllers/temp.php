@@ -3,6 +3,6 @@
 class Temp extends CI_Controller{
 	
 	public function index (){
-		$this->load->view ('shopping_cart');
+		$this->load->view ('user_product_page');
 	}	
 }
