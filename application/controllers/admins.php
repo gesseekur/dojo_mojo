@@ -82,11 +82,15 @@ class Admins extends CI_Controller {
 	}
 
 	public function add_product() {
+		$this->load->helper('form');
+		$this->load->library('upload');
 		$output['category'] = $this->Admin->get_all_categories();
 		$this->load->view('add_product', $output);
 	}
 
 	public function add_product_to_db(){
+		$this->load->helper('form');
+		$this->load->library('upload');
 		$new_category=$this->input->post('new_category');
 
 		if (strlen($new_category)) {
@@ -109,11 +113,34 @@ class Admins extends CI_Controller {
 
 
 	public function edit_product($id){
+		$this->load->helper('form');
+		$this->load->library('upload');
 		$output['category']= $this->Admin->get_all_categories();
 		$output['id'] = $id;
 		$output['product'] = $this->Admin->select_product($id);
 		$this->load->view('edit_product', $output);
 	}
+
+	public function do_upload() {
+		$this->load->helper('form');
+		$this->upload->initialize($config);
+		$config = array(
+			'upload_path' => "'./uploads/'",
+			'allowed_types' => "gif|jpg|png|jpeg|pdf",
+			'overwrite' => TRUE,
+			'max_size' => "2048000", 
+			'max_height' => "40",
+			'max_width' => "40"
+		);
+		$this->load->library('upload', $config);
+		if(!$this->upload->do_upload()) {
+			$this->session->set_flashdata('error', 'You had an error. Please try again');
+		}
+		if(is_file($config['upload_path'])) {
+    	chmod($config['upload_path'], 777); 
+		}
+	}
+
 
 	public function update_product_to_db($id){
 		$new_category= $this->input->post('new_category');

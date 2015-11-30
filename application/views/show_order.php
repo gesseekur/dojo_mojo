@@ -43,7 +43,7 @@
 	</table>
 
 	<div id="status">
-		<h4>Status: <?= $info['status']?></h4>
+		<h4>Status: <?= $info['status_name']?></h4>
 	</div>
 
 	<div id="total">

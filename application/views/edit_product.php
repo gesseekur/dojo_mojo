@@ -25,7 +25,12 @@
 		<p>or add new category:<input type="text" name="new_category"></p>
 		<p>Quantity <input type="text" value="<?= $product['quantity']?>" name="quantity"></p>
 		<p>Quantity sold:<input type="text" value="<?= $product['quantity_sold']?>" name="quantity_sold"></p>
-		<p>Images <input type="file"  value="<?= $product['image_name']?>"name="image_name" ></p>
+<?php
+	$this->upload->display_errors('<p>', '</p>');
+
+		echo form_open_multipart('admins/edit_product');
+?>
+		<p>Images <input type="file"  value="<?= $product['image_name']?>" name="image_name" ></p>
 		<img height="40" width="40" src="/assets/<?=$product['category_name']?>_icons/solid/<?=$product['image_name']?>.png">
 		<br><br>
 		<a href="/dashboard/products"> Cancel </a>

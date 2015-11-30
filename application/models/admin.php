@@ -133,7 +133,7 @@
  						LEFT JOIN products on order_details.product_id = products.id
  						WHERE orders.id = ? ";
  			$values = array($order_id);
- 			return $this->db->query($query, $values) -> result_array();
+ 			return $this->db->query($query, $values) -> row_array();
 		}
 
 	}
