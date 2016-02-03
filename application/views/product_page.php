@@ -70,9 +70,9 @@
                       </a>
                   </li>
 
-                  <li class="col-sm-3">
+                 <!--  <li class="col-sm-3">
                       <a class="thumbnail" id="carousel-selector-1"><img src="http://placehold.it/150x150&text=1"></a>
-                  </li>
+                  </li> -->
 
                   <li class="col-sm-3">
                       <a class="thumbnail" id="carousel-selector-2"><img src="http://placehold.it/150x150&text=2"></a>

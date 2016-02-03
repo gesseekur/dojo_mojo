@@ -1,7 +1,7 @@
 <?php ?>
 <!DOCTYPE html>
 <html>
-<<<<<<< HEAD
+
     <head>
         <meta charset="utf-8">
         <!-- <title><?php echo $product_name ?></title> -->
@@ -14,7 +14,7 @@
         <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
         <script type="text/javascript">
             $(document).ready(function(){
-=======
+
 <head>
     <meta charset="utf-8">
     <!-- <title><?php echo $product_name ?></title> -->
@@ -28,12 +28,11 @@
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <script type="text/javascript">
     $(document).ready(function(){
->>>>>>> 0b8ebbfef42fbc9d3e56c5713647371e627a88c3
         </script>
     </head>
     <body>
         <div class = "container">    
-<<<<<<< HEAD
+
         <div class="page-header">
             <h2>dojo_Mojo</h2>
             <a id = "store_link" href="">Back to dojo_Mojo Store</a>
@@ -56,7 +55,7 @@
                             <h3>Product Description</h3>
                             <p>Ontgonnen perzische in herhaling nu honderden belasting. Bevaarbaar schipbreuk kilometers af al uitgevoerd. In zand alle daad na doet gold waar. Stam twee aan koel zijn aard met geld. Op geslaagd nu trouwens omgeving na omwonden de wakkeren. Oven acre sago in de tijd op wijk.</p>
                         <div></p>
-=======
+
             <div class="page-header">
                 <nav class="navbar navbar-default">
                     <div class="container-fluid">
@@ -98,7 +97,7 @@
                         <h3>Product Description</h3>
                         <p><?= $product['description']?></p>
                         <div>
->>>>>>> 0b8ebbfef42fbc9d3e56c5713647371e627a88c3
+
                         </div>
                         <h3>Specs</h3>
                         <p><?= $product['specifications']?></p>

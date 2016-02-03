@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
+
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -31,7 +31,7 @@
 		<input id="search" type="text" placeholder="Search" name="search">
 	</form>
 	</div>
-=======
+
 <head>
 	<meta charset="utf-8">
 	<!-- <meta http-equiv="refresh" content="25"> -->
@@ -63,7 +63,6 @@
 					<input id="search" type="text" placeholder="Search" name="search">
 				</form>
 			</div>
->>>>>>> 0b8ebbfef42fbc9d3e56c5713647371e627a88c3
 
 			<table class = "table table-striped">
 				<thead>
@@ -100,7 +99,6 @@
 					<script
 					src="https://checkout.stripe.com/checkout.js" class="stripe-button"
 					data-key="pk_test_qUFrcMAtaUuox560lPVGhqdk"
-					data-image="/assets/armor_icons/11.png"
 					data-name="dojo_Mojo"
 					data-description="item payment"
 					data-amount="<?=$total*100?>"
