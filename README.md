@@ -1,5 +1,5 @@
 <h3>Dojo_Mojo</h3>
-<p>An eCommerce store for ninjas and other adventurers powered by the LAMP stack.</p>
+<p>An eCommerce store for ninjas and other adventurers - powered by the LAMP stack.</p>
 
 <h4> Built With </h4>
 <ul>
